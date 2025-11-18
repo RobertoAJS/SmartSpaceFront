@@ -1,0 +1,53 @@
+<!-- usuarioinsert.html -->
+<div style="text-align: center; margin: 3%">
+  <h2>Registrar usuario</h2>
+</div>
+
+<div style="text-align: center">
+  <form [formGroup]="form" (submit)="aceptar()">
+    <br />
+    <mat-form-field>
+      <mat-label>Username</mat-label>
+      <input matInput formControlName="username" required />
+      <mat-error *ngIf="form.get('username')?.hasError('required')">
+        El campo username es obligatorio.
+      </mat-error>
+    </mat-form-field>
+
+    <br />
+    <mat-form-field>
+      <mat-label>Nombre</mat-label>
+      <input matInput formControlName="nombre" required />
+      <mat-error *ngIf="form.get('nombre')?.hasError('required')">
+        El campo nombre es obligatorio.
+      </mat-error>
+    </mat-form-field>
+
+    <br />
+    <mat-form-field>
+      <mat-label>Email</mat-label>
+      <input matInput formControlName="email" required />
+      <mat-error *ngIf="form.get('email')?.hasError('required')">
+        El campo email es obligatorio.
+      </mat-error>
+      <mat-error *ngIf="form.get('email')?.hasError('email')">
+        Ingresa un correo válido.
+      </mat-error>
+    </mat-form-field>
+
+    <br />
+    <mat-form-field>
+      <mat-label>Contraseña</mat-label>
+      <input matInput type="password" formControlName="password" required />
+      <mat-error *ngIf="form.get('password')?.hasError('required')">
+        El campo contraseña es obligatorio.
+      </mat-error>
+      <mat-error *ngIf="form.get('password')?.hasError('minlength')">
+        Debe tener al menos 8 caracteres.
+      </mat-error>
+    </mat-form-field>
+
+    <br />
+    <button matButton>Registrar</button>
+  </form>
+</div>
