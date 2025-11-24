@@ -1,53 +1,114 @@
-<!-- usuarioinsert.html -->
-<div style="text-align: center; margin: 3%">
-  <h2>Registrar usuario</h2>
-</div>
+<div class="register-root">
+  <!-- Fondo degradado -->
+  <div class="register-bg"></div>
 
-<div style="text-align: center">
-  <form [formGroup]="form" (submit)="aceptar()">
-    <br />
-    <mat-form-field>
-      <mat-label>Username</mat-label>
-      <input matInput formControlName="username" required />
-      <mat-error *ngIf="form.get('username')?.hasError('required')">
-        El campo username es obligatorio.
-      </mat-error>
-    </mat-form-field>
+  <!-- Contenido principal -->
+  <div class="register-main">
+    <!-- Lado izquierdo: texto -->
+    <div class="register-left">
+      <h1>Crea tu cuenta</h1>
+      <p>
+        Regístrate para comenzar a usar SmartSpace AI y gestionar tus diseños desde el
+        dashboard.
+      </p>
+    </div>
 
-    <br />
-    <mat-form-field>
-      <mat-label>Nombre</mat-label>
-      <input matInput formControlName="nombre" required />
-      <mat-error *ngIf="form.get('nombre')?.hasError('required')">
-        El campo nombre es obligatorio.
-      </mat-error>
-    </mat-form-field>
+    <!-- Lado derecho: tarjeta de registro -->
+    <div class="register-right">
+      <div class="register-card">
+        <div class="register-card-header">
+          <h3>Registrarse</h3>
+          <p class="register-subtitle">
+            ¿Ya tienes una cuenta?
+            <a routerLink="/login">Inicia sesión</a>
+          </p>
+        </div>
 
-    <br />
-    <mat-form-field>
-      <mat-label>Email</mat-label>
-      <input matInput formControlName="email" required />
-      <mat-error *ngIf="form.get('email')?.hasError('required')">
-        El campo email es obligatorio.
-      </mat-error>
-      <mat-error *ngIf="form.get('email')?.hasError('email')">
-        Ingresa un correo válido.
-      </mat-error>
-    </mat-form-field>
+        <!-- FORMULARIO REACTIVO -->
+        <form [formGroup]="form" (ngSubmit)="aceptar()" class="register-form">
+          <!-- USERNAME -->
+          <div class="form-field">
+            <input formControlName="username" type="text" placeholder="Username" />
+            <div
+              *ngIf="form.get('username')?.touched && form.get('username')?.invalid"
+              class="field-error"
+            >
+              <span *ngIf="form.get('username')?.hasError('required')">
+                El username es obligatorio.
+              </span>
+              <span *ngIf="form.get('username')?.hasError('minlength')">
+                Debe tener al menos 4 caracteres.
+              </span>
+              <span *ngIf="form.get('username')?.hasError('maxlength')">
+                No debe superar 30 caracteres.
+              </span>
+            </div>
+          </div>
 
-    <br />
-    <mat-form-field>
-      <mat-label>Contraseña</mat-label>
-      <input matInput type="password" formControlName="password" required />
-      <mat-error *ngIf="form.get('password')?.hasError('required')">
-        El campo contraseña es obligatorio.
-      </mat-error>
-      <mat-error *ngIf="form.get('password')?.hasError('minlength')">
-        Debe tener al menos 8 caracteres.
-      </mat-error>
-    </mat-form-field>
+          <!-- NOMBRE -->
+          <div class="form-field">
+            <input formControlName="nombre" type="text" placeholder="Nombre completo" />
+            <div
+              *ngIf="form.get('nombre')?.touched && form.get('nombre')?.invalid"
+              class="field-error"
+            >
+              <span *ngIf="form.get('nombre')?.hasError('required')">
+                El nombre es obligatorio.
+              </span>
+            </div>
+          </div>
 
-    <br />
-    <button matButton>Registrar</button>
-  </form>
+          <!-- EMAIL -->
+          <div class="form-field">
+            <input formControlName="email" type="email" placeholder="Correo electrónico" />
+            <div
+              *ngIf="form.get('email')?.touched && form.get('email')?.invalid"
+              class="field-error"
+            >
+              <span *ngIf="form.get('email')?.hasError('required')">
+                El email es obligatorio.
+              </span>
+              <span *ngIf="form.get('email')?.hasError('email')">
+                Ingresa un correo válido.
+              </span>
+            </div>
+          </div>
+
+          <!-- PASSWORD -->
+          <div class="form-field">
+            <input formControlName="password" type="password" placeholder="Contraseña" />
+            <div
+              *ngIf="form.get('password')?.touched && form.get('password')?.invalid"
+              class="field-error"
+            >
+              <span *ngIf="form.get('password')?.hasError('required')">
+                La contraseña es obligatoria.
+              </span>
+              <span *ngIf="form.get('password')?.hasError('minlength')">
+                Debe tener al menos 8 caracteres.
+              </span>
+            </div>
+          </div>
+
+          <!-- BOTÓN REGISTRAR -->
+          <button type="submit" [disabled]="form.invalid" class="btn-primary">
+            Crear cuenta
+          </button>
+        </form>
+
+        <div class="register-footer">
+          <span>Al registrarte aceptas los términos y condiciones.</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Ola inferior -->
+  <svg class="register-wave" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+    <path
+      fill="#fff"
+      fill-opacity="1"
+      d="M0,0L40,42.7C80,85,160,171,240,197.3C320,224,400,192,480,154.7C560,117,640,75,720,74.7C800,75,880,117,960,154.7C1040,192,1120,224,1200,213.3C1280,203,1360,149,1400,122.7L1440,96L1440,320L1400,320C1360,320,1280,320,1200,320C1120,320,1040,320,960,320C880,320,800,320,720,320C640,320,560,320,480,320C400,320,320,320,240,320C160,320,80,320,40,320L0,320Z"
+    ></path>
+  </svg>
 </div>

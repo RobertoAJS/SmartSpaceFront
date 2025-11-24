@@ -4,6 +4,7 @@ import { Usuarioinsert } from './usuarioinsert/usuarioinsert';
 
 @Component({
   selector: 'app-usuario',
+  standalone: true,
   imports: [RouterOutlet, Usuarioinsert],
   templateUrl: './usuario.html',
   styleUrl: './usuario.css',
