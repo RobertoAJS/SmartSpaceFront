@@ -2,18 +2,33 @@ import { Routes } from '@angular/router';
 import { Usuarioinsert } from './components/usuario/usuarioinsert/usuarioinsert';
 import { Landing } from './components/landing/landing';
 import { Login } from './components/auth/login/login';
-import { Dashboard } from './components/dashboard/dashboard';
 import { authGuard } from './guards/auth.guard';
 import { guestGuard } from './guards/guest.guard';
+import { Usuariolistar } from './components/usuario/usuariolistar/usuariolistar';
+import { Usuariosearch } from './components/usuario/usuariosearch/usuariosearch';
+import { Usuario } from './components/usuario/usuario';
+import { Home } from './components/home/home';
 
 
 export const routes: Routes = [
-  { path: 'home', component: Landing },          // Landing pública
+  { path: 'landing', component: Landing },          // Landing pública
+
   { path: 'login', component: Login, canActivate: [guestGuard] },
   { path: 'register', component: Usuarioinsert, canActivate: [guestGuard] },  // solo registro
+  
+  { path: 'home', component: Home, canActivate: [authGuard] },
 
-  { path: 'dashboard', component: Dashboard, canActivate: [authGuard] }, // protegida
-  // children: [...] rutas hijas
+  {
+    path: 'usuarios',
+    component: Usuario,
+    canActivate: [authGuard],
+    children: [
+      { path: '', component: Usuariolistar },
+      { path: 'news', component: Usuarioinsert },
+      { path: 'edits/:id', component: Usuarioinsert },
+      { path: 'searchs', component: Usuariosearch },
+    ],
+  },
 
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: '**', redirectTo: 'home' }

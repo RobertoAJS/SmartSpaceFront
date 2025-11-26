@@ -1,0 +1,60 @@
+<div class="container">
+  @if (verificar()) {
+  <mat-toolbar class="custom-toolbar">
+    <!-- Botón Home -->
+    <button mat-button [routerLink]="['/homes']" class="btn-rojo">
+      <mat-icon>home</mat-icon>
+      <span>Home</span>
+    </button>
+
+    <!-- Menú de Usuarios (solo ADMIN) -->
+    @if (isAdmin()) {
+    <button
+      class="btn-rojo"
+      mat-button
+      [matMenuTriggerFor]="menuUsuarios"
+      aria-label="Menú de usuarios"
+    >
+      <mat-icon>group</mat-icon>
+      <span>Usuario</span>
+    </button>
+    }
+
+    <span class="spacer"></span>
+
+    <button mat-button [matMenuTriggerFor]="menuSalir">
+      <mat-icon>person</mat-icon>
+      <span>{{ usuario || 'Usuario' }}</span>
+    </button>
+  </mat-toolbar>
+  }
+
+  <!-- Menú Usuarios -->
+  <mat-menu #menuUsuarios="matMenu">
+    <button mat-menu-item routerLink="/usuarios">
+      <mat-icon>list</mat-icon>
+      <span>Listar</span>
+    </button>
+    <button mat-menu-item routerLink="/usuarios/news">
+      <mat-icon>add</mat-icon>
+      <span>Registrar</span>
+    </button>
+    <button mat-menu-item routerLink="/usuarios/searchs">
+      <mat-icon>search</mat-icon>
+      <span>Buscar</span>
+    </button>
+  </mat-menu>
+
+  <!-- Menú Salir -->
+  <mat-menu #menuSalir="matMenu">
+    <button mat-menu-item (click)="cerrar()">
+      <mat-icon>logout</mat-icon>
+      <span>Cerrar sesión</span>
+    </button>
+
+    <button mat-menu-item disabled>
+      Rol:
+      <span style="margin-left: 4px">{{ role || 'Sin rol' }}</span>
+    </button>
+  </mat-menu>
+</div>

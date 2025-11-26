@@ -37,6 +37,24 @@ export class Authservice {
     }
   }
 
+  // Decodifica el payload del JWT
+  private getPayload() {
+    const token = this.getToken();
+    if (!token) return null;
+
+    try {
+      const payloadBase64 = token.split('.')[1];
+      if (!payloadBase64) return null;
+
+      const payloadJson = atob(payloadBase64);
+      const payload = JSON.parse(payloadJson);
+      return payload;
+    } catch (e) {
+      console.error('Error al decodificar el payload del token', e);
+      return null;
+    }
+  }
+
   // Elimina el token (logout)
   clearToken(): void {
     localStorage.removeItem(this.tokenKey);
@@ -62,5 +80,67 @@ export class Authservice {
       console.error('Error al decodificar token JWT', e);
       return false;
     }
+  }
+  verificar() {
+    return this.isAuthenticated();
+  }
+
+  getRole(): string {
+    const payload = this.getPayload();
+    if (!payload) return '';
+
+    let rawRole: any = '';
+
+    if (Array.isArray(payload.authorities) && payload.authorities.length > 0) {
+      rawRole = payload.authorities[0];
+    }
+
+    else if (Array.isArray(payload.roles) && payload.roles.length > 0) {
+      rawRole = payload.roles[0];
+    }
+    else if (payload.role !== undefined) {
+      rawRole = payload.role;
+    }
+
+    if (rawRole && typeof rawRole === 'object') {
+      if (typeof rawRole.authority === 'string') {
+        rawRole = rawRole.authority;
+      } else if (typeof rawRole.nombre === 'string') {
+        rawRole = rawRole.nombre;
+      } else if (typeof rawRole.name === 'string') {
+        rawRole = rawRole.name;
+      } else {
+        rawRole = '';
+      }
+    }
+
+    if (typeof rawRole !== 'string') return '';
+    // Normalizar nombres (para que en el front SOLO se vea ADMIN / CLIENTE)
+    if (rawRole === 'ROLE_ADMIN') rawRole = 'ADMIN';
+    if (
+      rawRole === 'ROLE_CLIENTE' || 
+      rawRole === 'ROLE_USER' || 
+      rawRole === 'USER'
+    ) {
+      rawRole = 'CLIENTE';
+    }
+
+    return rawRole;
+  }
+
+  getUsername() {
+    const payload = this.getPayload();
+    if (!payload) return '';
+    if (typeof payload.sub === 'string') {
+      return payload.sub;
+    }
+    if (typeof payload.username === 'string') {
+      return payload.username;
+    }
+    if (typeof payload.user_name === 'string') {
+      return payload.user_name;
+    }
+
+    return '';
   }
 }

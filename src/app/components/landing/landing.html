@@ -1,21 +1,13 @@
 <header>
   <nav>
-    <div class="nav-left">
-      <!-- Si luego agregas logo real, crea un <img> aquí -->
-      <div class="logo">SmartSpace <span>AI</span></div>
-    </div>
+    <div class="logo">SMARTSPACE</div>
 
-    <!-- Menú móvil sin TS (checkbox hack) -->
-    <input type="checkbox" id="navToggle" class="nav-checkbox" />
-    <label class="nav-toggle" for="navToggle" aria-label="Abrir menú">☰</label>
-
-    <ul class="nav-links">
-      <li><a routerLink="/home" fragment="home">Inicio</a></li>
-      <li><a routerLink="/home" fragment="about">Sobre nosotros</a></li>
-      <li><a routerLink="/home" fragment="services">Características</a></li>
-      <li><a routerLink="/home" fragment="how">Cómo funciona</a></li>
-      <li><a routerLink="/home" fragment="contact">Contáctanos</a></li>
-      <li><a class="btn-login" routerLink="/login">Iniciar sesión</a></li>
+    <ul>
+      <li><a routerLink="/landing" fragment="home">Inicio</a></li>
+      <li><a routerLink="/landing" fragment="about">Nosotros</a></li>
+      <li><a routerLink="/landing" fragment="services">Servicios</a></li>
+      <li><a routerLink="/landing" fragment="contact">Contáctanos</a></li>
+      <li><a routerLink="/login" class="btn-login">Acceder</a></li>
     </ul>
   </nav>
 </header>
@@ -23,179 +15,109 @@
 <main>
   <!-- HERO -->
   <section id="home" class="hero">
-    <div class="hero-overlay"></div>
     <div class="hero-content">
-      <span class="badge">Startup · Diseño de Interiores</span>
-      <h1 class="hero-title">
-        Diseña tus espacios con Realidad Aumentada e Inteligencia Artificial
-      </h1>
+      <h1 class="hero-title">Diseña, optimiza y vive tu espacio inteligente</h1>
       <p class="hero-subtitle">
-        SmartSpace AI te permite escanear tus habitaciones, probar muebles en
-        realidad aumentada y recibir recomendaciones inteligentes antes de comprar.
+        Smartspace te permite planificar, visualizar y mejorar tus ambientes con inteligencia artificial.
       </p>
-      <div class="hero-actions">
-        <a routerLink="/home" fragment="services" class="btn btn-primary">Empieza ahora</a>
-        <a routerLink="/home" fragment="how" class="btn btn-outline">Ver cómo funciona</a>
-      </div>
-      <p class="hero-footnote">
-        Pensado para jóvenes, familias y profesionales que quieren tomar mejores
-        decisiones de diseño sin ser expertos.
-      </p>
+      <a routerLink="/landing" fragment="services" class="btn">Explora las soluciones</a>
     </div>
   </section>
 
-  <!-- SOBRE NOSOTROS -->
+  <!-- ABOUT -->
   <section id="about" class="about">
-    <h2 class="section-title">Sobre SmartSpace AI</h2>
+    <h2 class="about-section-title">Sobre Nosotros</h2>
     <div class="about-layout">
-      <!-- Placeholder en vez de imagen -->
-      <div class="about-img placeholder-box"></div>
+      <img
+        src="assets/images/hero-placeholder.png"
+        alt="Equipo Smartspace"
+        class="about-img"
+      />
 
       <div class="about-content">
-        <h3 class="section-subtitle">Realidad aumentada + IA para tu hogar</h3>
+        <h3>Nuestra Visión</h3>
+        <h1>Transformamos la manera en que diseñamos y habitamos los espacios</h1>
+
         <p>
-          SmartSpace AI es una startup tecnológica que combina realidad aumentada (AR) e
-          inteligencia artificial (IA) para democratizar el diseño de interiores. La
-          plataforma permite escanear habitaciones, visualizar muebles de forma inmersiva
-          y generar configuraciones personalizadas optimizadas en costo y sostenibilidad.
+          En Smartspace desarrollamos soluciones innovadoras que combinan diseño, automatización y tecnología inteligente
+          para optimizar cada rincón.
         </p>
         <p>
-          Nuestro objetivo es ayudarte a imaginar cómo quedará tu espacio antes de
-          comprar, reduciendo errores costosos y la necesidad de conocimientos técnicos.
-          Desde estudiantes con su primer departamento hasta diseñadores freelance,
-          SmartSpace AI hace que planificar interiores sea rápido, visual e intuitivo.
+          Desde la planificación hasta la simulación, ayudamos a visualizar y experimentar tu entorno antes de hacerlo
+          realidad.
         </p>
-        <ul class="about-list">
-          <li>Visualización inmersiva de muebles en tu espacio real</li>
-          <li>Recomendaciones inteligentes en base a tus gustos y medidas</li>
-          <li>Enfoque en muebles y configuraciones sostenibles</li>
-        </ul>
-        <a routerLink="/home" fragment="services" class="btn btn-primary">Explorar características</a>
+
+        <a routerLink="/landing" fragment="services" class="btn">Ver más</a>
       </div>
     </div>
   </section>
 
-  <!-- CARACTERÍSTICAS -->
+  <!-- SERVICES -->
   <section id="services" class="features">
-    <h2 class="section-title">Características principales</h2>
-    <p class="section-description">
-      SmartSpace AI integra todo el flujo de diseño interior: desde el escaneo de tu espacio
-      hasta la visualización en AR y la compra de muebles recomendados.
-    </p>
+    <h1>Nuestras Soluciones</h1>
+    <p>Smartspace ofrece herramientas impulsadas por IA para redefinir tus espacios.</p>
 
     <div class="feature-cards">
       <div class="feature-card">
-        <div class="feature-img placeholder-box"></div>
-        <h3>Escaneo inteligente del espacio</h3>
-        <p>
-          Usa la cámara de tu dispositivo para medir y escanear tus habitaciones. SmartSpace
-          AI genera un modelo del ambiente y detecta dimensiones clave para que todo encaje
-          correctamente.
-        </p>
+        <h3>Diseño Asistido por IA</h3>
+        <p>Genera y optimiza planos personalizados con IA.</p>
+        <img src="assets/images/placeholder1.png" class="feature-img" />
       </div>
 
       <div class="feature-card">
-        <div class="feature-img placeholder-box"></div>
-        <h3>Recomendaciones con IA</h3>
-        <p>
-          La IA analiza tu espacio, tus preferencias y tu presupuesto para sugerir muebles,
-          estilos y configuraciones que optimicen funcionalidad, costo y sostenibilidad.
-        </p>
+        <h3>Simulación 3D Interactiva</h3>
+        <p>Visualiza tus ambientes en 3D antes de construirlos.</p>
+        <img src="assets/images/placeholder2.png" class="feature-img" />
       </div>
 
       <div class="feature-card">
-        <div class="feature-img placeholder-box"></div>
-        <h3>Visualización en AR</h3>
-        <p>
-          Visualiza en tiempo real cómo se verán los muebles dentro de tu casa con realidad
-          aumentada. Gira, mueve y prueba diferentes combinaciones antes de tomar una
-          decisión.
-        </p>
+        <h3>Automatización del Hogar</h3>
+        <p>Controla luces, temperatura y dispositivos inteligentemente.</p>
+        <img src="assets/images/placeholder3.png" class="feature-img" />
+      </div>
+
+      <div class="feature-card">
+        <h3>Análisis Energético Inteligente</h3>
+        <p>Reduce costos con análisis predictivo energético.</p>
+        <img src="assets/images/hero-placeholder.png" class="feature-img" />
       </div>
     </div>
   </section>
 
-  <!-- CÓMO FUNCIONA -->
-  <section id="how" class="how-it-works">
-    <h2 class="section-title">¿Cómo funciona SmartSpace AI?</h2>
-    <p class="section-description">
-      En pocos pasos pasas de una habitación vacía a un diseño listo para compartir y comprar.
-    </p>
-
-    <div class="steps-grid">
-      <div class="step-card">
-        <span class="step-number">1</span>
-        <h3>Escanea tu espacio</h3>
-        <p>
-          Usa la cámara para capturar tu sala, dormitorio u oficina. El sistema detecta
-          medidas y genera la base de tu proyecto.
-        </p>
-      </div>
-
-      <div class="step-card">
-        <span class="step-number">2</span>
-        <h3>Personaliza con IA</h3>
-        <p>
-          Selecciona estilos, colores y tipos de mueble. La IA te sugiere combinaciones
-          optimizadas según tus necesidades y presupuesto.
-        </p>
-      </div>
-
-      <div class="step-card">
-        <span class="step-number">3</span>
-        <h3>Visualiza en AR</h3>
-        <p>
-          Proyecta los muebles en tu espacio real con realidad aumentada. Ajusta posiciones,
-          tamaños y distribuciones en cuestión de segundos.
-        </p>
-      </div>
-
-      <div class="step-card">
-        <span class="step-number">4</span>
-        <h3>Comparte y decide</h3>
-        <p>
-          Guarda tus diseños, compártelos con tu familia, clientes o amigos, y accede a
-          enlaces de compra para completar tu proyecto.
-        </p>
-      </div>
-    </div>
-  </section>
-
-  <!-- CONTACTO -->
+  <!-- CONTACT -->
   <section id="contact" class="contact">
-    <h2 class="section-title">Contáctanos</h2>
+    <h2>Contáctanos</h2>
+
     <div class="contact-layout">
       <div class="contact-info">
         <p class="diagonal-text">
-          Cuéntanos sobre tu proyecto y te ayudaremos a llevar SmartSpace AI a tus espacios
-          o a tu negocio.
+          ¿Tienes un proyecto o idea? ¡Hablemos!
         </p>
+
         <p>
-          Si tienes dudas sobre la plataforma, integración con tiendas de muebles o quieres
-          usar SmartSpace AI en tu empresa, escríbenos y nos pondremos en contacto contigo.
+          Nuestro equipo está listo para transformar tus espacios utilizando inteligencia artificial.
         </p>
+
         <br />
-        <p><strong>E-mail:</strong></p>
-        <p>contacto@smartspaceai.com</p>
+        <p><strong>Email:</strong> contacto@smartspace.com</p>
+
         <br />
-        <p><strong>Síguenos en redes sociales:</strong></p>
+        <p><strong>Síguenos:</strong></p>
+
         <div class="social-icons">
-          <!-- Placeholders circulares (sin imágenes) -->
-          <div class="social-placeholder" aria-label="Facebook"></div>
-          <div class="social-placeholder" aria-label="Instagram"></div>
-          <div class="social-placeholder" aria-label="LinkedIn"></div>
+          <img src="assets/images/placeholder1.png" class="social-img" />
+          <img src="assets/images/placeholder2.png" class="social-img" />
+          <img src="assets/images/placeholder3.png" class="social-img" />
         </div>
       </div>
 
-      <div class="contact-form">
+      <div class="login-form2">
         <form>
-          <input class="input" type="text" placeholder="Nombre completo" required />
+          <input class="input" type="text" placeholder="Nombre" required />
           <input class="input" type="email" placeholder="Correo electrónico" required />
           <input class="input" type="text" placeholder="Asunto" required />
-          <textarea placeholder="Cuéntanos brevemente tu necesidad" required></textarea>
-          <button type="submit" class="btn btn-primary btn-contact">
-            Enviar mensaje
-          </button>
+          <textarea placeholder="Mensaje" required></textarea>
+          <button type="submit" class="btn1">Enviar</button>
         </form>
       </div>
     </div>
@@ -203,5 +125,5 @@
 </main>
 
 <footer>
-  <p>&copy; 2025 SmartSpace AI. Todos los derechos reservados.</p>
+  <p>&copy; 2025 Smartspace. Todos los derechos reservados.</p>
 </footer>

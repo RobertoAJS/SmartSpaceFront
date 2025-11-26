@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component, HostListener } from '@angular/core';
 import { RouterLink, RouterLinkWithHref } from '@angular/router';
 
+
 @Component({
   selector: 'app-landing',
   standalone: true,
@@ -9,16 +10,8 @@ import { RouterLink, RouterLinkWithHref } from '@angular/router';
   templateUrl: './landing.html',
   styleUrl: './landing.css',
 })
+
 export class Landing {
-  isMenuOpen = false;
-  
-  toggleMenu() {
-    this.isMenuOpen = !this.isMenuOpen;
-  }
-  closeMenu() {
-    this.isMenuOpen = false;
-  }
-  // Header sólido al hacer scroll (evita “transparente y mezclado”)
   @HostListener('window:scroll')
   onScroll() {
     const header = document.querySelector('header');

@@ -8,7 +8,7 @@ export const guestGuard: CanActivateFn = (route, state) => {
 
     // Si YA está autenticado, lo mandas al dashboard
     if (authService.isAuthenticated()) {
-        router.navigate(['/dashboard']);
+        router.navigate(['/home']);
         return false;
     }
     

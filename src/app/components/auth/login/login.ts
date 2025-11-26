@@ -50,11 +50,10 @@ export class Login implements OnInit{
       next: (res) => {
         this.isLoading = false;
 
-        // 👇 OJO: ajusta la propiedad según tu LoginResponse
         this.authService.saveToken(res.token);
 
         this.form.reset();
-        this.router.navigate(['/dashboard']);
+        this.router.navigate(['/home']);
       },
       error: (err) => {
         this.isLoading = false;

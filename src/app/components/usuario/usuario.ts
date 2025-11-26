@@ -1,11 +1,12 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, RouterOutlet } from '@angular/router';
-import { Usuarioinsert } from './usuarioinsert/usuarioinsert';
+import { Usuariolistar } from './usuariolistar/usuariolistar';
+
 
 @Component({
   selector: 'app-usuario',
   standalone: true,
-  imports: [RouterOutlet, Usuarioinsert],
+  imports: [Usuariolistar, RouterOutlet],
   templateUrl: './usuario.html',
   styleUrl: './usuario.css',
 })

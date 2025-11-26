@@ -1,0 +1,56 @@
+.custom-toolbar {
+  background-color: rgb(42, 86, 128);
+  display: flex;
+  align-items: center;
+  padding: 0 8px;
+}
+
+.btn-rojo {
+  background-color: rgb(17, 14, 14);
+  border: none;
+  font-size: smaller;
+  border-radius: 4px;
+  margin: 4px;
+  padding: 6px 10px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+  color: white;
+  transition: background-color 0.2s ease;
+}
+
+.btn-rojo mat-icon {
+  font-size: 1.3rem;
+}
+
+.btn-rojo:hover {
+  background-color: rgb(15, 203, 71);
+}
+
+.custom-toolbar button,
+.custom-toolbar mat-icon {
+  color: white;
+}
+
+.mat-mdc-menu-panel {
+  background-color: rgba(144, 238, 144, 0.3) !important;
+  backdrop-filter: blur(6px);
+  border: 1px solid rgba(46, 158, 46, 0.3);
+  border-radius: 8px;
+  padding: 4px 0;
+}
+
+.mat-mdc-menu-item {
+  color: #064d06 !important;
+  font-size: 0.85rem;
+  font-weight: 500;
+}
+
+.mat-mdc-menu-item:hover {
+  background-color: rgba(46, 158, 46, 0.2) !important;
+}
+
+.spacer {
+  flex: 1 1 auto;
+}
