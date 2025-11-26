@@ -99,3 +99,43 @@
 .logout-text {
   font-size: 0.75rem;
 }
+
+.menu-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.25rem 0.8rem;
+  border-radius: 999px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #e5e7eb;
+  background: transparent;
+  border: none;
+}
+
+.menu-button mat-icon {
+  font-size: 18px;
+}
+
+.menu-button:hover {
+  background: rgba(249, 250, 251, 0.08);
+  color: #f9fafb;
+}
+.dash-nav {
+  margin-right: 1rem;
+}
+
+.dash-menu-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 0.8rem;
+  text-transform: none;
+  color: #e5e7eb;
+}
+
+.dash-menu-btn mat-icon {
+  font-size: 18px;
+}

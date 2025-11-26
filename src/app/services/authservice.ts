@@ -42,6 +42,30 @@ export class Authservice {
     localStorage.removeItem(this.tokenKey);
   }
 
+  // Rol
+  getRole(): string | null {
+  const token = this.getToken();
+  if (!token) return null;
+
+  try {
+    const payloadBase64 = token.split('.')[1];
+    const payloadJson = atob(payloadBase64);
+    const payload = JSON.parse(payloadJson);
+
+    // roles = [{ authority: "ROLE_ADMIN" }]
+    if (payload.roles && payload.roles.length > 0) {
+      return payload.roles[0].authority.replace("ROLE_", "");
+    }
+
+    return null;
+
+  } catch (e) {
+    console.error("Error obteniendo rol del token", e);
+    return null;
+  }
+}
+
+
   // Opcional: verificar si el token sigue vigente (si tiene "exp")
   isAuthenticated(): boolean {
     const token = this.getToken();
