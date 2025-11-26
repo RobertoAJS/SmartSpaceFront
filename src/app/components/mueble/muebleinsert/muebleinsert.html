@@ -1,0 +1,69 @@
+<div class="container">
+  <div style="text-align: center; margin: 3%">
+    <h2>{{ edicion ? 'Editar mueble' : 'Registrar mueble' }}</h2>
+  </div>
+
+  <div style="text-align: center; margin: 2%">
+    <form [formGroup]="form" (ngSubmit)="aceptar()">
+      <!-- Código solo en edición, SIN formControlName ni disabled -->
+      @if (edicion) {
+      <mat-form-field>
+        <mat-label>Código</mat-label>
+        <input matInput [value]="id" readonly />
+      </mat-form-field>
+      }
+      <br />
+
+      <mat-form-field>
+        <mat-label>Nombre</mat-label>
+        <input matInput formControlName="nombre" />
+        @if (form.get('nombre')?.hasError('required')) {
+        <mat-error>El nombre es obligatorio.</mat-error>
+        }
+      </mat-form-field>
+      <br />
+
+      <mat-form-field>
+        <mat-label>Categoría</mat-label>
+        <input matInput formControlName="categoria" />
+      </mat-form-field>
+      <br />
+
+      <mat-form-field>
+        <mat-label>Dimensión</mat-label>
+        <input matInput formControlName="dimension" />
+      </mat-form-field>
+      <br />
+
+      <mat-form-field>
+        <mat-label>Estilo</mat-label>
+        <input matInput formControlName="estilo" />
+      </mat-form-field>
+      <br />
+
+      <mat-form-field>
+        <mat-label>Precio</mat-label>
+        <input matInput type="number" formControlName="precio" />
+        @if (form.get('precio')?.hasError('required')) {
+        <mat-error>El precio es obligatorio.</mat-error>
+        }
+      </mat-form-field>
+      <br />
+
+      <div class="custom-field">
+        <mat-checkbox formControlName="sostenibilidad">Sostenible</mat-checkbox>
+      </div>
+      <br />
+
+      <mat-form-field>
+        <mat-label>Proveedor</mat-label>
+        <input matInput formControlName="proveedor" />
+      </mat-form-field>
+      <br />
+
+      <button matButton>
+        {{ edicion ? 'Actualizar' : 'Registrar' }}
+      </button>
+    </form>
+  </div>
+</div>

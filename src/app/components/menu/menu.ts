@@ -35,6 +35,6 @@ export class Menu {
 
   cerrar() {
     this.authService.clearToken();
-    this.router.navigate(['/login']);
+    this.router.navigate(['/landing']);
   }
 }

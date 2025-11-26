@@ -6,7 +6,7 @@ export const guestGuard: CanActivateFn = (route, state) => {
     const authService = inject(Authservice); // o AuthService
     const router = inject(Router);
 
-    // Si YA está autenticado, lo mandas al dashboard
+    // Si YA está autenticado, lo mandas al home
     if (authService.isAuthenticated()) {
         router.navigate(['/home']);
         return false;

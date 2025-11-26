@@ -3,15 +3,17 @@ import {
   ScrollDispatcher,
   ScrollingModule,
   ViewportRuler
-} from "./chunk-GL5CYUAS.js";
+} from "./chunk-BW6AMMGY.js";
+import {
+  MatRippleModule
+} from "./chunk-YACLOBUJ.js";
 import {
   MatRipple,
-  MatRippleModule,
   _StructuralStylesLoader
-} from "./chunk-LXKIGINQ.js";
+} from "./chunk-B5ZIVXIT.js";
 import {
   _animationsDisabled
-} from "./chunk-VWRBO6ZW.js";
+} from "./chunk-7L5QXCPD.js";
 import {
   _isTestEnvironment
 } from "./chunk-DJSQ2PR2.js";
@@ -36,7 +38,7 @@ import {
   hasModifierKey,
   isFakeMousedownFromScreenReader,
   isFakeTouchstartFromScreenReader
-} from "./chunk-SU6UZSR7.js";
+} from "./chunk-OKTC2CDX.js";
 import {
   _CdkPrivateStyleLoader
 } from "./chunk-XFYNVBOO.js";
@@ -44,12 +46,12 @@ import {
   supportsScrollBehavior
 } from "./chunk-5EG33CFQ.js";
 import {
+  Platform
+} from "./chunk-U23PXSZM.js";
+import {
   BidiModule,
   Directionality
 } from "./chunk-I77MDKE2.js";
-import {
-  Platform
-} from "./chunk-UV4LNQ42.js";
 import {
   Location
 } from "./chunk-BGUU5Y2V.js";

@@ -2,9 +2,19 @@
   @if (verificar()) {
   <mat-toolbar class="custom-toolbar">
     <!-- Botón Home -->
-    <button mat-button [routerLink]="['/homes']" class="btn-rojo">
+    <button mat-button [routerLink]="['/home']" class="btn-rojo">
       <mat-icon>home</mat-icon>
       <span>Home</span>
+    </button>
+    <!-- Botón Mueble: visible para cualquier rol autenticado -->
+    <button
+      class="btn-rojo"
+      mat-button
+      [matMenuTriggerFor]="menuMuebles"
+      aria-label="Menú de muebles"
+    >
+      <mat-icon>chair</mat-icon>
+      <span>Mueble</span>
     </button>
 
     <!-- Menú de Usuarios (solo ADMIN) -->
@@ -42,6 +52,17 @@
     <button mat-menu-item routerLink="/usuarios/searchs">
       <mat-icon>search</mat-icon>
       <span>Buscar</span>
+    </button>
+  </mat-menu>
+
+  <mat-menu #menuMuebles="matMenu">
+    <button mat-menu-item routerLink="/muebles">
+      <mat-icon>list</mat-icon>
+      <span>Listar</span>
+    </button>
+    <button mat-menu-item routerLink="/muebles/news">
+      <mat-icon>add</mat-icon>
+      <span>Registrar</span>
     </button>
   </mat-menu>
 

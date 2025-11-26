@@ -8,14 +8,16 @@ import { Usuariolistar } from './components/usuario/usuariolistar/usuariolistar'
 import { Usuariosearch } from './components/usuario/usuariosearch/usuariosearch';
 import { Usuario } from './components/usuario/usuario';
 import { Home } from './components/home/home';
-
+import { Mueble } from './components/mueble/mueble';
+import { Mueblelistar } from './components/mueble/mueblelistar/mueblelistar';
+import { Muebleinsert } from './components/mueble/muebleinsert/muebleinsert';
 
 export const routes: Routes = [
-  { path: 'landing', component: Landing },          // Landing pública
+  { path: 'landing', component: Landing }, // Landing pública
 
   { path: 'login', component: Login, canActivate: [guestGuard] },
-  { path: 'register', component: Usuarioinsert, canActivate: [guestGuard] },  // solo registro
-  
+  { path: 'register', component: Usuarioinsert, canActivate: [guestGuard] }, // solo registro
+
   { path: 'home', component: Home, canActivate: [authGuard] },
 
   {
@@ -30,6 +32,17 @@ export const routes: Routes = [
     ],
   },
 
-  { path: '', redirectTo: 'home', pathMatch: 'full' },
-  { path: '**', redirectTo: 'home' }
+  {
+    path: 'muebles',
+    component: Mueble,
+    canActivate: [authGuard], // cualquier usuario autenticado (ADMIN o CLIENTE)
+    children: [
+      { path: '', component: Mueblelistar },
+      { path: 'news', component: Muebleinsert },
+      { path: 'edits/:id', component: Muebleinsert },
+    ],
+  },
+
+  { path: '', redirectTo: 'landing', pathMatch: 'full' },
+  { path: '**', redirectTo: 'landing' },
 ];
