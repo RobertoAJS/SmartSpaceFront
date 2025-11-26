@@ -1,0 +1,27 @@
+<div class="form-container">
+
+  <h2>{{ edicion ? 'Editar Mueble' : 'Registrar Mueble' }}</h2>
+
+  <form [formGroup]="form" (ngSubmit)="aceptar()">
+
+    <input type="text" placeholder="Nombre" formControlName="nombre" />
+
+    <input type="text" placeholder="Categoría" formControlName="categoria" />
+
+    <input type="text" placeholder="Dimensión" formControlName="dimension" />
+
+    <input type="text" placeholder="Estilo" formControlName="estilo" />
+
+    <input type="number" placeholder="Precio" formControlName="precio" />
+
+    <label>
+      <input type="checkbox" formControlName="sostenibilidad" />
+      Sostenible
+    </label>
+
+    <input type="text" placeholder="Proveedor" formControlName="proveedor" />
+
+    <button type="submit">{{ edicion ? 'Actualizar' : 'Registrar' }}</button>
+
+  </form>
+</div>

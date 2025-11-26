@@ -1,0 +1,114 @@
+<div class="dash-root">
+  <header class="dash-header">
+    <div class="dash-brand">
+      <span class="dash-logo">SmartSpace <span>AI</span></span>
+      <span class="dash-title">Panel principal</span>
+    </div>
+
+
+
+    <div class="dash-actions">
+      
+        <!-- Menú de módulos (por ahora solo Usuarios) -->
+      <button *ngIf="isAdmin"
+        mat-button
+        class="menu-button"
+        [matMenuTriggerFor]="menuUsuarios"
+         type="button"
+        aria-label="Menú usuarios"
+      >
+        <mat-icon>person</mat-icon>
+        <span>Usuarios</span>
+      </button>
+
+
+      <mat-menu #menuUsuarios="matMenu">
+        <button mat-menu-item routerLink="/dashboard/usuarios">
+          <mat-icon>list</mat-icon>
+          <span>Listar</span>
+        </button>
+        <button mat-menu-item routerLink="/dashboard/usuarios/news">
+          <mat-icon>add</mat-icon>
+          <span>Registrar</span>
+        </button>
+        <button mat-menu-item routerLink="/dashboard/usuarios/searchs">
+        <mat-icon>search</mat-icon>
+        <span>Buscar</span>
+      </button>
+      </mat-menu>
+
+      <!-- Menú de Muebles (solo para ADMIN) -->
+      <button
+        *ngIf="isAdmin"
+        mat-button
+        class="menu-button"
+        [matMenuTriggerFor]="menuMuebles"
+        type="button"
+        aria-label="Menú muebles"
+      >
+        <mat-icon>chair</mat-icon>
+        <span>Muebles</span>
+      </button>
+
+      <mat-menu #menuMuebles="matMenu">
+        <button mat-menu-item routerLink="/dashboard/muebles">
+          <mat-icon>list</mat-icon>
+          <span>Listar</span>
+        </button>
+
+        <button mat-menu-item routerLink="/dashboard/muebles/new">
+          <mat-icon>add</mat-icon>
+          <span>Registrar</span>
+        </button>
+
+        <button mat-menu-item routerLink="/dashboard/muebles/searchs">
+          <mat-icon>search</mat-icon>
+          <span>Buscar</span>
+        </button>
+      </mat-menu>
+
+
+      <!-- Notificaciones (sin lógica todavía) -->
+      <button class="icon-btn" type="button" aria-label="Notificaciones">
+        <span class="icon-circle">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path
+              d="M12 2a6 6 0 00-6 6v3.2L4.4 13.8A1 1 0 005 15h14a1 1 0 00.6-1.8L18 11.2V8a6 6 0 00-6-6zm0 18a2.25 2.25 0 002.24-2H9.76A2.25 2.25 0 0012 20z"
+            />
+          </svg>
+        </span>
+      </button>
+
+      <!-- LOG OUT -->
+      <button
+        class="icon-btn logout-btn"
+        type="button"
+        aria-label="Cerrar sesión"
+        (click)="logout()"
+      >
+        <span class="icon-circle">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path
+              d="M12 2a5 5 0 110 10 5 5 0 010-10zm0 12c-4.1 0-7.5 2.3-8 6.2a1 1 0 001 .8h14a1 1 0 001-.8C19.5 16.3 16.1 14 12 14z"
+            />
+          </svg>
+        </span>
+        <span class="logout-text">LOG OUT</span>
+      </button>
+    </div>
+  </header>
+
+  <main class="dash-main">
+    <!-- Aquí se van a renderizar las rutas hijas del dashboard -->
+    <router-outlet></router-outlet>
+
+    <!-- Bienvenida por defecto: solo cuando NO hay hijo activo (/dashboard) -->
+    <section class="dash-welcome" [hidden]="route.children.length !== 0">
+      <h2>Bienvenido al dashboard 👋</h2>
+      <p>
+        Desde aquí luego podrás acceder a módulos como usuarios, muebles, diseños, comentarios, etc.
+      </p>
+      <p>Usa el menú de arriba para navegar.</p>
+    </section>
+  </main>
+</div>
