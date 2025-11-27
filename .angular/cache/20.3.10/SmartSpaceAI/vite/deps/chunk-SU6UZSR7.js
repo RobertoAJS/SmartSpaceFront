@@ -2,13 +2,13 @@ import {
   _CdkPrivateStyleLoader
 } from "./chunk-XFYNVBOO.js";
 import {
+  BidiModule
+} from "./chunk-I77MDKE2.js";
+import {
   Platform,
   coerceElement,
   coerceNumberProperty
-} from "./chunk-U23PXSZM.js";
-import {
-  BidiModule
-} from "./chunk-I77MDKE2.js";
+} from "./chunk-UV4LNQ42.js";
 import {
   APP_ID,
   CSP_NONCE,
@@ -3123,4 +3123,4 @@ export {
   FocusKeyManager,
   MatCommonModule
 };
-//# sourceMappingURL=chunk-OKTC2CDX.js.map
+//# sourceMappingURL=chunk-SU6UZSR7.js.map

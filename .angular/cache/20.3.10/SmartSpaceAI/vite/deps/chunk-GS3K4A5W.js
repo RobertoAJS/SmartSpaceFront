@@ -1,6 +1,6 @@
 import {
   _animationsDisabled
-} from "./chunk-7L5QXCPD.js";
+} from "./chunk-VWRBO6ZW.js";
 import {
   coerceBooleanProperty
 } from "./chunk-46HAYV32.js";
@@ -8,13 +8,13 @@ import {
   MatCommonModule,
   ObserversModule,
   _IdGenerator
-} from "./chunk-OKTC2CDX.js";
-import {
-  Platform
-} from "./chunk-U23PXSZM.js";
+} from "./chunk-SU6UZSR7.js";
 import {
   Directionality
 } from "./chunk-I77MDKE2.js";
+import {
+  Platform
+} from "./chunk-UV4LNQ42.js";
 import {
   NgTemplateOutlet
 } from "./chunk-BGUU5Y2V.js";
@@ -1680,4 +1680,4 @@ export {
   MatFormField,
   MatFormFieldModule
 };
-//# sourceMappingURL=chunk-YJMGSPAU.js.map
+//# sourceMappingURL=chunk-GS3K4A5W.js.map

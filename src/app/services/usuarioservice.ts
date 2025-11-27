@@ -11,15 +11,13 @@ const base_url = environment.base;
 export class UsuarioService {
     private url = `${base_url}/api/usuarios`;
 
-    // para refrescar la tabla como hace tu profe
+    // para refrescar la tabla
     private listaCambio = new Subject<Usuario[]>();
 
     constructor(private http: HttpClient) {}
     insert(u: Usuario) {
-        const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
         return this.http.post(this.url, u, {
-            headers,
-            responseType: 'text' as const
+            responseType: 'text' as const,
         });
     }
 
@@ -58,7 +56,7 @@ export class UsuarioService {
         return this.listaCambio.asObservable();
     }
     
-    // ===== OPCIONAL: BUSCAR POR USERNAME (si luego lo usas) =====
+    // BUSCAR POR USERNAME 
     searchUsername(username: string) {
         const params = { username };
         return this.http.get<Usuario>(`${this.url}/buscar`, { params });

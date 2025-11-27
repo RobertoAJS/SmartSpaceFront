@@ -1,5 +1,5 @@
 export class Usuario {
-    idUsuario?: number;        // <-- opcional, SIN valor por defecto
+    idUsuario?: number;        
     username: string = ''; 
     nombre: string = '';
     email: string = '';

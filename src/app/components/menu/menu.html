@@ -6,16 +6,6 @@
       <mat-icon>home</mat-icon>
       <span>Home</span>
     </button>
-    <!-- Botón Mueble: visible para cualquier rol autenticado -->
-    <button
-      class="btn-rojo"
-      mat-button
-      [matMenuTriggerFor]="menuMuebles"
-      aria-label="Menú de muebles"
-    >
-      <mat-icon>chair</mat-icon>
-      <span>Mueble</span>
-    </button>
 
     <!-- Menú de Usuarios (solo ADMIN) -->
     @if (isAdmin()) {
@@ -29,6 +19,17 @@
       <span>Usuario</span>
     </button>
     }
+
+    <!-- Botón Mueble: visible para cualquier rol autenticado -->
+    <button
+      class="btn-rojo"
+      mat-button
+      [matMenuTriggerFor]="menuMuebles"
+      aria-label="Menú de muebles"
+    >
+      <mat-icon>chair</mat-icon>
+      <span>Mueble</span>
+    </button>
 
     <span class="spacer"></span>
 
@@ -63,6 +64,10 @@
     <button mat-menu-item routerLink="/muebles/news">
       <mat-icon>add</mat-icon>
       <span>Registrar</span>
+    </button>
+    <button mat-menu-item routerLink="/muebles/searchs">
+      <mat-icon>search</mat-icon>
+      <span>Buscar</span>
     </button>
   </mat-menu>
 

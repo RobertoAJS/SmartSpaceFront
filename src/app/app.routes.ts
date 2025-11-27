@@ -11,6 +11,7 @@ import { Home } from './components/home/home';
 import { Mueble } from './components/mueble/mueble';
 import { Mueblelistar } from './components/mueble/mueblelistar/mueblelistar';
 import { Muebleinsert } from './components/mueble/muebleinsert/muebleinsert';
+import { Mueblesearch } from './components/mueble/mueblesearch/mueblesearch';
 
 export const routes: Routes = [
   { path: 'landing', component: Landing }, // Landing pública
@@ -40,6 +41,7 @@ export const routes: Routes = [
       { path: '', component: Mueblelistar },
       { path: 'news', component: Muebleinsert },
       { path: 'edits/:id', component: Muebleinsert },
+      { path: 'searchs', component: Mueblesearch },
     ],
   },
 

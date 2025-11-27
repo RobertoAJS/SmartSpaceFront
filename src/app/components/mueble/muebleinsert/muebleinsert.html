@@ -26,18 +26,27 @@
       <mat-form-field>
         <mat-label>Categoría</mat-label>
         <input matInput formControlName="categoria" />
+        @if (form.get('categoria')?.hasError('required')) {
+        <mat-error>La categoría es obligatoria.</mat-error>
+        }
       </mat-form-field>
       <br />
 
       <mat-form-field>
         <mat-label>Dimensión</mat-label>
         <input matInput formControlName="dimension" />
+        @if (form.get('dimension')?.hasError('required')) {
+        <mat-error>La dimensión es obligatoria.</mat-error>
+        }
       </mat-form-field>
       <br />
 
       <mat-form-field>
         <mat-label>Estilo</mat-label>
         <input matInput formControlName="estilo" />
+        @if (form.get('estilo')?.hasError('required')) {
+        <mat-error>El estilo es obligatorio.</mat-error>
+        }
       </mat-form-field>
       <br />
 
@@ -58,6 +67,9 @@
       <mat-form-field>
         <mat-label>Proveedor</mat-label>
         <input matInput formControlName="proveedor" />
+        @if (form.get('proveedor')?.hasError('required')) {
+        <mat-error>El proveedor es obligatorio.</mat-error>
+        }
       </mat-form-field>
       <br />
 
