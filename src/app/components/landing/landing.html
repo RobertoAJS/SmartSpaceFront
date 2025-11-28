@@ -1,0 +1,138 @@
+<header>
+  <nav>
+    <button class="menu-icon" (click)="toggleMenu()">
+      <mat-icon>menu</mat-icon>
+    </button>
+
+    <div class="logo">SMARTSPACE</div>
+
+    <div class="login-container">
+        <a routerLink="/login" class="btn-login">Acceder</a>
+    </div>
+
+    <ul [class.active]="menuAbierto">
+      <li><a routerLink="/home" fragment="home" (click)="toggleMenu()">Inicio</a></li>
+      <li><a routerLink="/home" fragment="about" (click)="toggleMenu()">Nosotros</a></li>
+      <li><a routerLink="/home" fragment="services" (click)="toggleMenu()">Servicios</a></li>
+      <li><a routerLink="/home" fragment="contact" (click)="toggleMenu()">Contáctanos</a></li>
+    </ul>
+
+    <div class="overlay" *ngIf="menuAbierto" (click)="toggleMenu()"></div>
+  </nav>
+</header>
+
+<main>
+  <!-- HERO -->
+  <section id="home" class="hero">
+    <div class="hero-content">
+      <h1 class="hero-title">Diseña, optimiza y vive tu espacio inteligente</h1>
+      <p class="hero-subtitle">
+        Smartspace te permite planificar, visualizar y mejorar tus ambientes con inteligencia artificial.
+      </p>
+      <a routerLink="/home" fragment="services" class="btn">Explora las soluciones</a>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about" class="about">
+    <h2 class="about-section-title">Sobre Nosotros</h2>
+    <div class="about-layout">
+      <img
+        src="assets/images/hero-placeholder.png"
+        alt="Equipo Smartspace"
+        class="about-img"
+      />
+
+      <div class="about-content">
+        <h3>Nuestra Visión</h3>
+        <h1>Transformamos la manera en que diseñamos y habitamos los espacios</h1>
+
+        <p>
+          En Smartspace desarrollamos soluciones innovadoras que combinan diseño, automatización y tecnología inteligente
+          para optimizar cada rincón.
+        </p>
+        <p>
+          Desde la planificación hasta la simulación, ayudamos a visualizar y experimentar tu entorno antes de hacerlo
+          realidad.
+        </p>
+
+        <a routerLink="/home" fragment="services" class="btn">Ver más</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section id="services" class="features">
+    <h1>Nuestras Soluciones</h1>
+    <p>Smartspace ofrece herramientas impulsadas por IA para redefinir tus espacios.</p>
+
+    <div class="feature-cards">
+      <div class="feature-card">
+        <h3>Diseño Asistido por IA</h3>
+        <p>Genera y optimiza planos personalizados con IA.</p>
+        <img src="assets/images/placeholder1.png" class="feature-img" />
+      </div>
+
+      <div class="feature-card">
+        <h3>Simulación 3D Interactiva</h3>
+        <p>Visualiza tus ambientes en 3D antes de construirlos.</p>
+        <img src="assets/images/placeholder2.png" class="feature-img" />
+      </div>
+
+      <div class="feature-card">
+        <h3>Automatización del Hogar</h3>
+        <p>Controla luces, temperatura y dispositivos inteligentemente.</p>
+        <img src="assets/images/placeholder3.png" class="feature-img" />
+      </div>
+
+      <div class="feature-card">
+        <h3>Análisis Energético Inteligente</h3>
+        <p>Reduce costos con análisis predictivo energético.</p>
+        <img src="assets/images/hero-placeholder.png" class="feature-img" />
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" class="contact">
+    <h2>Contáctanos</h2>
+
+    <div class="contact-layout">
+      <div class="contact-info">
+        <p class="diagonal-text">
+          ¿Tienes un proyecto o idea? ¡Hablemos!
+        </p>
+
+        <p>
+          Nuestro equipo está listo para transformar tus espacios utilizando inteligencia artificial.
+        </p>
+
+        <br />
+        <p><strong>Email:</strong> contacto@smartspace.com</p>
+
+        <br />
+        <p><strong>Síguenos:</strong></p>
+
+        <div class="social-icons">
+          <img src="assets/images/placeholder1.png" class="social-img" />
+          <img src="assets/images/placeholder2.png" class="social-img" />
+          <img src="assets/images/placeholder3.png" class="social-img" />
+        </div>
+      </div>
+
+      <div class="login-form2">
+        <form>
+          <input class="input" type="text" placeholder="Nombre" required />
+          <input class="input" type="email" placeholder="Correo electrónico" required />
+          <input class="input" type="text" placeholder="Asunto" required />
+          <textarea placeholder="Mensaje" required></textarea>
+          <button type="submit" class="btn1">Enviar</button>
+        </form>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <p>&copy; 2025 Smartspace. Todos los derechos reservados.</p>
+</footer>

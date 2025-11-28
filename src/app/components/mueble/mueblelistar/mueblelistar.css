@@ -1,0 +1,58 @@
+.container {
+  padding: 2% 5%;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.header h1 {
+  margin: 0;
+}
+
+/* Botones como los de proveedor / usuario */
+button[matButton] {
+  font-size: 0.8rem;
+  font-weight: 500;
+  border-radius: 6px;
+  padding: 4px 12px;
+  color: rgb(240, 244, 241);
+  text-transform: none;
+  transition: all 0.25s ease;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.15);
+  background-color: rgb(251, 140, 0);
+}
+
+button[matButton]:hover {
+  background-color: rgb(15, 203, 71);
+}
+
+.table-wrapper {
+  margin-top: 16px;
+}
+
+.full-width-table {
+  width: 100%;
+}
+
+.no-data {
+  margin-top: 12px;
+  font-size: 0.9rem;
+  color: #555;
+}
+
+@media (max-width: 768px) {
+  .header {
+    flex-direction: column;
+    gap: 8px;
+    align-items: flex-start;
+  }
+
+  button[matButton] {
+    font-size: 0.7rem;
+    padding: 3px 8px;
+  }
+}

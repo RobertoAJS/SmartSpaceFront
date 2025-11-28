@@ -1,0 +1,98 @@
+<div class="login-root">
+  <!-- Fondo degradado -->
+  <div class="login-bg"></div>
+
+  <!-- Contenido principal -->
+  <div class="login-main">
+    <!-- Lado izquierdo: texto -->
+    <div class="login-left">
+      <h1>Bienvenido de nuevo</h1>
+      <p>
+        Login de autenticación con Angular 18+ en una SmartSpaceAI
+      </p>
+    </div>
+
+    <!-- Lado derecho: tarjeta de login -->
+    <div class="login-right">
+      <div class="login-card">
+        <div class="login-card-header">
+          <h3>Iniciar sesión</h3>
+          <p class="login-subtitle">
+            ¿No tienes una cuenta?
+            <a routerLink="/register">Registrate</a>
+          </p>
+        </div>
+
+        <!-- FORMULARIO REACTIVO -->
+        <form [formGroup]="form" (ngSubmit)="login()" class="login-form">
+          <!-- USERNAME -->
+          <div class="form-field">
+            <input formControlName="username" type="text" placeholder="Username" />
+            <div
+              *ngIf="form.get('username')?.touched && form.get('username')?.invalid"
+              class="field-error"
+            >
+              <span *ngIf="form.get('username')?.hasError('required')">
+                El username es obligatorio.
+              </span>
+              <span *ngIf="form.get('username')?.hasError('minlength')">
+                Debe tener al menos 4 caracteres.
+              </span>
+              <span *ngIf="form.get('username')?.hasError('maxlength')">
+                No debe superar 30 caracteres.
+              </span>
+            </div>
+          </div>
+
+          <!-- PASSWORD -->
+          <div class="form-field">
+            <input formControlName="password" type="password" placeholder="Password" />
+            <div
+              *ngIf="form.get('password')?.touched && form.get('password')?.invalid"
+              class="field-error"
+            >
+              <span *ngIf="form.get('password')?.hasError('required')">
+                La contraseña es obligatoria.
+              </span>
+              <span *ngIf="form.get('password')?.hasError('minlength')">
+                Debe tener al menos 8 caracteres.
+              </span>
+            </div>
+          </div>
+
+          <div class="form-extra">
+            <a href="#" class="forgot-link">¿Olvidaste tu contraseña?</a>
+          </div>
+
+          <!-- BOTÓN LOGIN -->
+          <button type="submit" [disabled]="isLoading || form.invalid" class="btn-primary">
+            {{ isLoading ? 'Ingresando...' : 'Iniciar sesión' }}
+          </button>
+
+          <!-- MENSAJE GENERAL DE ERROR -->
+          <div *ngIf="errorMessage" class="general-error">
+            {{ errorMessage }}
+          </div>
+
+
+          <div class="login-back">
+            <a routerLink="/landing" class="login-back-link">Volver</a>
+          </div>
+        </form>
+
+        <div class="login-footer">
+          <span>Copyright © 2021-2025</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Ola inferior -->
+  <svg class="login-wave" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+    <path
+      fill="#fff"
+      fill-opacity="1"
+      d="M0,0L40,42.7C80,85,160,171,240,197.3C320,224,400,192,480,154.7C560,117,640,75,720,74.7C800,75,880,117,960,154.7C1040,192,1120,224,1200,213.3C1280,203,1360,149,1400,122.7L1440,96L1440,320L1400,320C1360,320,1280,320,1200,320C1120,320,1040,320,960,320C880,320,800,320,720,320C640,320,560,320,480,320C400,320,320,320,240,320C160,320,80,320,40,320L0,320Z"
+    ></path>
+  </svg>
+</div>
