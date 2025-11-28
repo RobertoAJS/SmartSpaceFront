@@ -6,6 +6,7 @@ import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
+import { Authservice } from '../../../services/authservice';
 
 @Component({
   selector: 'app-mueblelistar',
@@ -13,14 +14,24 @@ import { MatIconModule } from '@angular/material/icon';
   templateUrl: './mueblelistar.html',
   styleUrl: './mueblelistar.css',
 })
-export class Mueblelistar implements OnInit{
-
+export class Mueblelistar implements OnInit {
   dataSource: MatTableDataSource<Mueble> = new MatTableDataSource();
-  displayedColumns: string[] = ['c1', 'c2', 'c3', 'c4', 'c5', 'c6', 'c7', 'c8', 'c9', 'c10'];
-  
-  constructor(private mS: Muebleservice) {}
+  displayedColumns: string[] = [];
+
+  role: string = '';
+
+  constructor(private mS: Muebleservice, private authService: Authservice) {}
 
   ngOnInit(): void {
+    this.role = this.authService.getRole();
+    // DEFINIR COLUMNAS SEGÚN SI ES ADMIN
+    if (this.role === 'ADMIN') {
+      this.displayedColumns = ['c1', 'c2', 'c3', 'c4', 'c5', 'c6', 'c7', 'c8', 'c9', 'c10'];
+    } else {
+      this.displayedColumns = ['c1', 'c2', 'c3', 'c4', 'c5', 'c6', 'c7', 'c8'];
+    }
+
+    // LISTAR DATOS
     this.mS.list().subscribe((data) => {
       this.dataSource = new MatTableDataSource(data);
     });

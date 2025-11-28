@@ -61,10 +61,12 @@
       <mat-icon>list</mat-icon>
       <span>Listar</span>
     </button>
+    @if (isAdmin()) {
     <button mat-menu-item routerLink="/muebles/news">
       <mat-icon>add</mat-icon>
       <span>Registrar</span>
     </button>
+    }
     <button mat-menu-item routerLink="/muebles/searchs">
       <mat-icon>search</mat-icon>
       <span>Buscar</span>
