@@ -24,13 +24,13 @@ import { Muebleservice } from '../../../services/muebleservice';
 export class Mueblesearch {
   dataSource: MatTableDataSource<Mueble> = new MatTableDataSource();
   displayedColumns: string[] = ['c1', 'c2', 'c3', 'c4', 'c5', 'c6', 'c7', 'c8'];
-  nombrebusqueda: string = '';
+  categoria: string = '';
   mensaje: string = '';
   form: FormGroup;
 
   constructor(private mS: Muebleservice, private fb: FormBuilder) {
     this.form = this.fb.group({
-      nombrebusqueda: [''],
+      categoria: [''],
     });
   }
 
@@ -39,14 +39,14 @@ export class Mueblesearch {
       this.dataSource = new MatTableDataSource(data);
     });
 
-    this.form.get('nombrebusqueda')?.valueChanges.subscribe((value) => {
-      this.nombrebusqueda = value;
+    this.form.get('categoria')?.valueChanges.subscribe((value) => {
+      this.categoria = value;
       this.buscar();
     });
   }
 
   buscar(): void {
-    const termino = this.nombrebusqueda.trim();
+    const termino = this.categoria.trim();
 
     if (termino === '') {
       this.mS.list().subscribe((data) => {

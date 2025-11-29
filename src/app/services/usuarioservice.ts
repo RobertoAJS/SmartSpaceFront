@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { environment } from '../../environments/environments'; 
+import { environment } from '../../environments/environment'; 
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Usuario } from '../models/usuario';
 import { Observable, Subject } from 'rxjs';
@@ -11,19 +11,21 @@ const base_url = environment.base;
 export class UsuarioService {
     private url = `${base_url}/api/usuarios`;
 
-    // para refrescar la tabla
+    // para refrescar la tabla como hace tu profe
     private listaCambio = new Subject<Usuario[]>();
 
     constructor(private http: HttpClient) {}
     insert(u: Usuario) {
+        const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
         return this.http.post(this.url, u, {
-            responseType: 'text' as const,
+            headers,
+            responseType: 'text' as const
         });
     }
 
     // ===== LISTAR TODOS =====
     list() {
-        return this.http.get<Usuario[]>(`${this.url}/listar`);
+        return this.http.get<Usuario[]>(this.url);
     }
 
     // ===== OBTENER POR ID =====
@@ -56,7 +58,7 @@ export class UsuarioService {
         return this.listaCambio.asObservable();
     }
     
-    // BUSCAR POR USERNAME 
+    // ===== OPCIONAL: BUSCAR POR USERNAME (si luego lo usas) =====
     searchUsername(username: string) {
         const params = { username };
         return this.http.get<Usuario>(`${this.url}/buscar`, { params });

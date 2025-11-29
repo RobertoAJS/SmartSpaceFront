@@ -6,6 +6,36 @@
       <mat-icon>home</mat-icon>
       <span>Home</span>
     </button>
+    <!-- Botón Mueble: visible para cualquier rol autenticado -->
+    <button
+      class="btn-rojo"
+      mat-button
+      [matMenuTriggerFor]="menuMuebles"
+      aria-label="Menú de muebles"
+    >
+      <mat-icon>chair</mat-icon>
+      <span>Mueble</span>
+    </button>
+
+    <button
+      class="btn-rojo"
+      mat-button
+      [matMenuTriggerFor]="menuDisenos"
+    >
+      <mat-icon>design_services</mat-icon>
+      <span>Diseño</span>
+    </button>
+
+    <button
+      class="btn-rojo"
+      mat-button
+      [matMenuTriggerFor]="menuFavoritos"
+      aria-label="Menú de favoritos"
+    >
+      <mat-icon>favorite</mat-icon>
+      <span>Favoritos</span>
+    </button>
+
 
     <!-- Menú de Usuarios (solo ADMIN) -->
     @if (isAdmin()) {
@@ -19,17 +49,6 @@
       <span>Usuario</span>
     </button>
     }
-
-    <!-- Botón Mueble: visible para cualquier rol autenticado -->
-    <button
-      class="btn-rojo"
-      mat-button
-      [matMenuTriggerFor]="menuMuebles"
-      aria-label="Menú de muebles"
-    >
-      <mat-icon>chair</mat-icon>
-      <span>Mueble</span>
-    </button>
 
     <span class="spacer"></span>
 
@@ -61,17 +80,30 @@
       <mat-icon>list</mat-icon>
       <span>Listar</span>
     </button>
-    @if (isAdmin()) {
     <button mat-menu-item routerLink="/muebles/news">
       <mat-icon>add</mat-icon>
       <span>Registrar</span>
     </button>
-    }
-    <button mat-menu-item routerLink="/muebles/searchs">
-      <mat-icon>search</mat-icon>
-      <span>Buscar</span>
+  </mat-menu>
+
+  <mat-menu #menuDisenos="matMenu">
+    <button mat-menu-item routerLink="/disenos">
+      <mat-icon>list</mat-icon>
+      <span>Listar</span>
+    </button>
+    <button mat-menu-item routerLink="/disenos/upload">
+      <mat-icon>add</mat-icon>
+      <span>Subir diseño</span>
     </button>
   </mat-menu>
+
+  <mat-menu #menuFavoritos="matMenu">
+    <button mat-menu-item routerLink="/favoritos">
+      <mat-icon>list</mat-icon>
+      <span>Mis favoritos</span>
+    </button>
+  </mat-menu>
+
 
   <!-- Menú Salir -->
   <mat-menu #menuSalir="matMenu">

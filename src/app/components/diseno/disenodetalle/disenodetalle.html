@@ -1,0 +1,64 @@
+<div class="detalle-container">
+
+  <h1 class="titulo">Detalle del Diseño</h1>
+
+  <div class="card-diseno">
+    <h2>{{ diseno?.nombre }}</h2>
+
+    <p class="fecha">
+      Subido el:
+      {{ diseno?.fechaCreacion ? (diseno.fechaCreacion | date:'dd/MM/yyyy') : 'Sin fecha' }}
+    </p>
+
+    <button class="btn-archivo" (click)="abrirArchivo()">
+      📄 Ver archivo
+    </button>
+
+    <p class="autor">
+      Subido por:
+      <strong>
+        {{ diseno?.usuario?.username || 'Desconocido' }}
+      </strong>
+    </p>
+  </div>
+
+  <div class="comentarios-container">
+
+    <h2>Comentarios ({{ comentarios.length }})</h2>
+
+    <div *ngFor="let c of comentarios" class="comentario-card">
+      <div class="comentario-header">
+        <span class="comentario-user">{{ c.username || 'Usuario' }}</span>
+        <span class="comentario-fecha">
+          {{ c.fecha ? (c.fecha | date:'dd/MM/yyyy') : '---' }}
+        </span>
+      </div>
+
+      <p class="comentario-texto">
+        {{ c.textoComentario }}
+      </p>
+      
+      <!-- SOLO ADMIN puede eliminar -->
+      <button 
+        *ngIf="auth.getRole() === 'ADMIN'" 
+        class="btn-eliminar" 
+        (click)="eliminar(c.idComentario!)">
+        🗑 Eliminar
+      </button>
+
+    </div>
+
+    <div class="nuevo-comentario">
+      <textarea
+        [(ngModel)]="nuevoComentario"
+        placeholder="Escribe un comentario..."
+      ></textarea>
+
+      <button (click)="comentar()" class="btn-comentar">
+        💬 Comentar
+      </button>
+    </div>
+
+  </div>
+
+</div>

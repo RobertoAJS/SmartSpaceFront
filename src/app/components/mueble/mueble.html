@@ -1,5 +1,6 @@
-<router-outlet></router-outlet>
-
-<div [hidden]="route.children.length !== 0">
-    <app-mueblelistar></app-mueblelistar>
+<div *ngIf="!currentChild">
+  <!-- Aquí va el contenido principal -->
+  <app-mueblelistar></app-mueblelistar>
 </div>
+
+<router-outlet></router-outlet>

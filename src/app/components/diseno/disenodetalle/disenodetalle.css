@@ -1,0 +1,119 @@
+.detalle-container {
+  max-width: 900px;
+  margin: 20px auto;
+  padding: 15px;
+}
+
+.titulo {
+  text-align: center;
+  margin-bottom: 25px;
+  font-size: 28px;
+  color: #333;
+}
+
+/* TARJETA DEL DISEÑO */
+.card-diseno {
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 20px;
+  margin-bottom: 30px;
+  box-shadow: 0px 4px 12px rgba(0,0,0,0.1);
+}
+
+.card-diseno h2 {
+  margin: 0 0 10px 0;
+  color: #444;
+}
+
+.fecha, .autor {
+  color: #666;
+  font-size: 15px;
+  margin-top: 5px;
+}
+
+.btn-archivo {
+  background: #007bff;
+  color: white;
+  padding: 10px 14px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  margin-top: 12px;
+  font-size: 15px;
+}
+
+.btn-archivo:hover {
+  background: #005dc1;
+}
+
+/* SECCIÓN COMENTARIOS */
+.comentarios-container {
+  margin-top: 30px;
+}
+
+.comentarios-container h2 {
+  margin-bottom: 15px;
+}
+
+/* Comentarios */
+.comentario-card {
+  background: #fafafa;
+  padding: 14px;
+  border-radius: 10px;
+  margin-bottom: 12px;
+  border-left: 4px solid #007bff;
+}
+
+.comentario-header {
+  display: flex;
+  justify-content: space-between;
+  font-size: 14px;
+  margin-bottom: 8px;
+}
+
+.comentario-user {
+  font-weight: bold;
+  color: #333;
+}
+
+.comentario-fecha {
+  color: #777;
+}
+
+.comentario-texto {
+  font-size: 15px;
+  color: #444;
+}
+
+/* Nuevo comentario */
+.nuevo-comentario {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.nuevo-comentario textarea {
+  width: 100%;
+  min-height: 90px;
+  padding: 10px;
+  border-radius: 10px;
+  border: 1px solid #bbb;
+  font-size: 15px;
+  resize: vertical;
+  margin-bottom: 10px;
+}
+
+.btn-comentar {
+  align-self: flex-end;
+  background: #28a745;
+  color: white;
+  padding: 10px 16px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 15px;
+}
+
+.btn-comentar:hover {
+  background: #1f7c34;
+}

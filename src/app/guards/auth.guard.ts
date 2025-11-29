@@ -10,6 +10,13 @@ export const authGuard: CanActivateFn = (route, state) => {
         return true;
     }
 
+    if (authService.isTokenExpired()) {
+        alert("Sesión expirada");
+        authService.logout();
+        return router.createUrlTree(['/login']);
+    }
+
+
     // Si no está autenticado, redirige al login
     router.navigate(['/login']);
     return false;

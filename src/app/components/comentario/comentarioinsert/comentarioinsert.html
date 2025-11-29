@@ -1,0 +1,15 @@
+<div class="container">
+  <h2>Nuevo Comentario</h2>
+
+  <form [formGroup]="form" (ngSubmit)="registrar()">
+
+    <label>Comentario</label>
+    <textarea formControlName="textoComentario"></textarea>
+
+    <label>ID Diseño</label>
+    <input type="number" formControlName="idDiseno">
+
+    <button type="submit">Guardar</button>
+
+  </form>
+</div>

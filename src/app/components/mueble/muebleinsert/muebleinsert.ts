@@ -45,13 +45,13 @@ export class Muebleinsert implements OnInit {
 
   ngOnInit(): void {
     this.form = this.formBuilder.group({
-      nombre: ['', Validators.required],
+      nombre: ['', [Validators.required, Validators.minLength(2)]],
       categoria: ['', Validators.required],
-      dimension: ['', Validators.required],
+      dimension: [''],
       estilo: ['', Validators.required],
-      precio: [0, Validators.required],
+      precio: [0, [Validators.required, Validators.min(0)]],
       sostenibilidad: [false],
-      proveedor: ['', Validators.required],
+      proveedor: [''],
     });
 
     // Luego vemos si viene con /edits/:id

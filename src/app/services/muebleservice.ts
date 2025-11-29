@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { environment } from '../../environments/environments';
+import { environment } from '../../environments/environment';
 import { Mueble } from '../models/mueble';
 import { Observable, Subject } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
@@ -16,20 +16,26 @@ export class Muebleservice {
 
   constructor(private http: HttpClient) {}
 
+  // ===== INSERTAR =====  POST /api/muebles
   insert(m: Mueble) {
+    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
     return this.http.post(this.url, m, {
+      headers,
       responseType: 'text' as const,
     });
   }
 
+  // ===== LISTAR TODOS =====  GET /api/muebles
   list() {
     return this.http.get<Mueble[]>(this.url);
   }
 
+  // ===== OBTENER POR ID =====  GET /api/muebles/{id}
   listId(id: number) {
     return this.http.get<Mueble>(`${this.url}/${id}`);
   }
 
+  // ===== ACTUALIZAR =====  PUT /api/muebles
   update(m: Mueble) {
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
     return this.http.put(this.url, m, {
@@ -38,17 +44,20 @@ export class Muebleservice {
     });
   }
 
+  // ===== ELIMINAR =====  DELETE /api/muebles/{id}
   delete(id: number) {
     return this.http.delete(`${this.url}/${id}`, {
       responseType: 'text' as const,
     });
   }
 
+  
   searchName(categoria: string) {
-  const params = { categoria };
-  return this.http.get<Mueble[]>(`${this.url}/buscar`, { params });
-}
+    const params = { categoria };
+    return this.http.get<Mueble[]>(`${this.url}/buscar`, { params });
+  }
 
+  // ===== MANEJO DE LISTA EN MEMORIA (para la tabla) =====
   setList(listaNueva: Mueble[]) {
     this.listaCambio.next(listaNueva);
   }

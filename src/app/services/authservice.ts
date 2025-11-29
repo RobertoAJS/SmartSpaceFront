@@ -1,10 +1,9 @@
 import { Injectable } from '@angular/core';
-import { environment } from '../../environments/environments';
+import { environment } from '../../environments/environment';
 import { Router } from '@angular/router';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { LoginRequest, LoginResponse } from '../models/login';
-import { Observable, tap } from 'rxjs';
-import { JwtHelperService } from '@auth0/angular-jwt';
+import { Observable } from 'rxjs';
 
 const base_url = environment.base;
 
@@ -13,71 +12,126 @@ const base_url = environment.base;
 })
 export class Authservice {
   private url = `${base_url}/auth/login`;
-  private tokenKey = 'token';
-  private helper = new JwtHelperService();
+  private tokenKey = 'authToken';   // <--- El token real se guarda aquí
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private router: Router) {}
 
+  // Login al backend
   login(body: LoginRequest): Observable<LoginResponse> {
-    return this.http.post<LoginResponse>(this.url, body);
+    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+    return this.http.post<LoginResponse>(this.url, body, { headers });
   }
 
-  // Guarda el token en localStorage
+  // Guardar token
   saveToken(token: string): void {
-    sessionStorage.setItem(this.tokenKey, token);
+    localStorage.setItem(this.tokenKey, token);
   }
 
-  // Obtiene el token y si no hay devuelve vacia
-  getToken(): string {
-    const token = sessionStorage.getItem(this.tokenKey);
-    return token ? token : '';
+  // Obtener token
+  getToken(): string | null {
+    return localStorage.getItem(this.tokenKey);
   }
 
-  // Elimina el token (logout)
-  clearToken(): void {
-    sessionStorage.removeItem(this.tokenKey);
+  // Decodificar payload del JWT
+  private getPayload() {
+    const token = this.getToken();
+    if (!token) return null;
+
+    try {
+      const payloadBase64 = token.split('.')[1];
+      const payloadJson = atob(payloadBase64);
+      return JSON.parse(payloadJson);
+    } catch (e) {
+      console.error('Error al decodificar el payload del token', e);
+      return null;
+    }
   }
 
-  // ==== AUTH ====
+  // Logout REAL correctamente implementado
+  logout(): void {
+    // Eliminar token
+    localStorage.removeItem(this.tokenKey);
 
-  // Verifica si el token sigue vigente
+    // Eliminar otros datos relacionados
+    localStorage.removeItem('role');
+    localStorage.removeItem('username');
+    localStorage.removeItem('idUsuario');
+
+    // Opcional: redireccionar inmediatamente
+    // this.router.navigate(['/login']);
+  }
+
+  // Verifica si el token está expirado
+  isTokenExpired(): boolean {
+    const token = this.getToken();
+    if (!token) return true;
+
+    try {
+      const payload = JSON.parse(atob(token.split('.')[1]));
+      const exp = payload.exp * 1000;
+      return Date.now() > exp;
+    } catch {
+      return true;
+    }
+  }
+
+  // Indica si está autenticado
   isAuthenticated(): boolean {
-    const token = this.getToken();
-    if (token === '') return false;
-    return !this.helper.isTokenExpired(token);
+    return !this.isTokenExpired();
   }
 
-  verificar(): boolean {
-    return this.getToken() !== '';
+  // Obtener ID del usuario desde el token
+  getUserId() {
+    const payload = this.getPayload();
+    return payload?.userId || payload?.idUsuario || 0;
   }
 
-  // rol: ADMIN o CLIENTE
+  // Obtener rol del usuario
   getRole(): string {
-    const token = this.getToken();
-    if (token === '') return '';
+    const payload = this.getPayload();
+    if (!payload) return '';
 
-    const decoded: any = this.helper.decodeToken(token);
-    if (!decoded || !decoded.roles || decoded.roles.length === 0) {
-      return '';
+    let rawRole: any = '';
+
+    if (Array.isArray(payload.authorities) && payload.authorities.length > 0) {
+      rawRole = payload.authorities[0];
+    }
+    else if (Array.isArray(payload.roles) && payload.roles.length > 0) {
+      rawRole = payload.roles[0];
+    }
+    else if (payload.role !== undefined) {
+      rawRole = payload.role;
     }
 
-    const firstRole = decoded.roles[0];
-    if (firstRole && typeof firstRole.authority === 'string') {
-      return firstRole.authority; // ADMIN o CLIENTE
+    // Si viene como objeto
+    if (rawRole && typeof rawRole === 'object') {
+      rawRole = rawRole.authority || rawRole.nombre || rawRole.name || '';
     }
 
-    return '';
+    // Normalizar
+    if (rawRole === 'ROLE_ADMIN') rawRole = 'ADMIN';
+    if (rawRole === 'ROLE_CLIENTE' || rawRole === 'ROLE_USER' || rawRole === 'USER') {
+      rawRole = 'CLIENTE';
+    }
+
+    return rawRole;
   }
 
-  // username para el menu
-  getUsername(): string {
-    const token = this.getToken();
-    if (token === '') return '';
-    const decoded: any = this.helper.decodeToken(token);
-    if (!decoded) return '';
-    if (typeof decoded.sub === 'string') {
-      return decoded.sub;
-    }
-    return '';
+  // Obtener username
+  getUsername() {
+    const payload = this.getPayload();
+    if (!payload) return '';
+
+    return (
+      payload.sub ||
+      payload.username ||
+      payload.user_name ||
+      ''
+    );
+  }
+
+  // Alias
+  verificar() {
+    return this.isAuthenticated();
   }
 }

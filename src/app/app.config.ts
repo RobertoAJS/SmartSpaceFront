@@ -9,6 +9,7 @@ export const appConfig: ApplicationConfig = {
   providers: [
     provideBrowserGlobalErrorListeners(),
     provideZoneChangeDetection({ eventCoalescing: true }),
+
     provideRouter(
       routes,
       withInMemoryScrolling({
@@ -16,8 +17,9 @@ export const appConfig: ApplicationConfig = {
         scrollPositionRestoration: 'enabled'
       })
     ),
+
     provideHttpClient(
-      withFetch(), 
-      withInterceptors([authInterceptor]))
+      withInterceptors([authInterceptor])   // <-- Solo esto
+    )
   ]
 };

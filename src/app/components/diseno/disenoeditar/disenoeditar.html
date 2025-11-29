@@ -1,0 +1,42 @@
+<div class="container">
+
+  <h2>Editar Diseño</h2>
+
+  <form [formGroup]="form" (ngSubmit)="guardar()">
+
+    <!-- ID (readonly) -->
+    <mat-form-field appearance="outline" class="full">
+      <mat-label>ID</mat-label>
+      <input matInput [value]="id" disabled />
+    </mat-form-field>
+
+    <!-- Nombre -->
+    <mat-form-field appearance="outline" class="full">
+      <mat-label>Nombre</mat-label>
+      <input matInput formControlName="nombre" />
+      <mat-error *ngIf="form.get('nombre')?.hasError('required')">
+        El nombre es obligatorio.
+      </mat-error>
+    </mat-form-field>
+
+    <!-- Estado -->
+    <mat-form-field appearance="outline" class="full">
+      <mat-label>Estado</mat-label>
+      <input matInput formControlName="estado" />
+      <mat-error *ngIf="form.get('estado')?.hasError('required')">
+        El estado es obligatorio.
+      </mat-error>
+    </mat-form-field>
+
+    <!-- Archivo (solo mostrar, no editar) -->
+    <mat-form-field appearance="outline" class="full">
+      <mat-label>Archivo subido</mat-label>
+      <input matInput formControlName="archivoUrl" readonly />
+    </mat-form-field>
+
+    <button mat-button color="primary" type="submit">
+      Guardar Cambios
+    </button>
+
+  </form>
+</div>

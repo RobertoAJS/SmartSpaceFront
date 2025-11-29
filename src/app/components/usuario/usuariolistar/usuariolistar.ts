@@ -72,5 +72,4 @@ export class Usuariolistar implements OnInit{
       });
     });
   }
-
 }

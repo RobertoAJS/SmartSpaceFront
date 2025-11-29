@@ -11,7 +11,19 @@ import { Home } from './components/home/home';
 import { Mueble } from './components/mueble/mueble';
 import { Mueblelistar } from './components/mueble/mueblelistar/mueblelistar';
 import { Muebleinsert } from './components/mueble/muebleinsert/muebleinsert';
+import { Diseno } from './components/diseno/diseno';
+import { DisenoListar } from './components/diseno/disenolistar/disenolistar';
+import { DisenoUpload } from './components/diseno/disenoupload/disenoupload';
+import { DisenoEditar } from './components/diseno/disenoeditar/disenoeditar';
+import { Favorito } from './components/favorito/favorito';
+import { FavoritoListar } from './components/favorito/favoritolistar/favoritolistar';
+import { Comentario } from './models/comentario';
+import { ComentarioListar } from './components/comentario/comentariolistar/comentariolistar';
+import { ComentarioInsert } from './components/comentario/comentarioinsert/comentarioinsert';
+import { DisenoDetalle } from './components/diseno/disenodetalle/disenodetalle';
+import { ComentarioEditar } from './components/comentario/comentarioeditar/comentarioeditar';
 import { Mueblesearch } from './components/mueble/mueblesearch/mueblesearch';
+import { adminGuard } from './guards/admin.guard';
 
 export const routes: Routes = [
   { path: 'landing', component: Landing }, // Landing pública
@@ -24,7 +36,7 @@ export const routes: Routes = [
   {
     path: 'usuarios',
     component: Usuario,
-    canActivate: [authGuard],
+    canActivate: [authGuard, adminGuard],
     children: [
       { path: '', component: Usuariolistar },
       { path: 'news', component: Usuarioinsert },
@@ -44,6 +56,42 @@ export const routes: Routes = [
       { path: 'searchs', component: Mueblesearch },
     ],
   },
+
+  {
+      path: 'disenos',
+      component: Diseno,
+      canActivate: [authGuard],
+      children: [
+        { path: '', component: DisenoListar },
+        { path: 'upload', component: DisenoUpload },
+        { path: 'edits/:id', component: DisenoEditar },
+      
+        {path: 'detalle/:id', component: DisenoDetalle, canActivate:[authGuard]}
+      ],
+    },
+  
+  {
+      path: 'favoritos',
+      component: Favorito,
+      canActivate: [authGuard],
+      children: [
+        { path: '', component: FavoritoListar },
+      ],
+    },
+
+  {
+      path: 'comentarios',
+      component: Comentario,
+      canActivate: [authGuard, adminGuard],
+      children: [
+        { path: '', component: ComentarioListar },
+        { path: 'news', component: ComentarioInsert },
+        { path: 'edits/:id', component: ComentarioEditar },
+      ],
+    },
+
+
+
 
   { path: '', redirectTo: 'landing', pathMatch: 'full' },
   { path: '**', redirectTo: 'landing' },

@@ -1,0 +1,24 @@
+<div class="container">
+  <h2>Editar Comentario</h2>
+
+  <form [formGroup]="form" (ngSubmit)="guardar()">
+    
+    <label>Comentario</label>
+    <textarea formControlName="textoComentario"></textarea>
+    <div class="error" *ngIf="form.get('textoComentario')?.touched && form.get('textoComentario')?.invalid">
+      El comentario no puede estar vacío.
+    </div>
+
+    <label>Fecha</label>
+    <input type="text" formControlName="fecha" readonly />
+
+    <label>Usuario</label>
+    <input type="text" formControlName="username" readonly />
+
+    <label>Diseño</label>
+    <input type="text" formControlName="nombreDiseno" readonly />
+
+    <button type="submit" class="btn">Guardar Cambios</button>
+
+  </form>
+</div>
