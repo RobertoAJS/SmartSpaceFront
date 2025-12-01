@@ -20,8 +20,8 @@ import { Authservice } from '../../../services/authservice';
     MatButtonModule,
     MatIconModule
   ],
-  templateUrl: './subir-diseno.component.html',
-  styleUrls: ['./subir-diseno.component.css']
+  templateUrl: './subir-diseno.html',
+  styleUrls: ['./subir-diseno.css']
 })
 export class SubirDisenoComponent implements OnInit {
   

@@ -1,14 +1,14 @@
 import {
-  BidiModule
-} from "./chunk-I77MDKE2.js";
-import {
   _CdkPrivateStyleLoader
-} from "./chunk-XFYNVBOO.js";
+} from "./chunk-EAIKLXOI.js";
+import {
+  BidiModule
+} from "./chunk-2SIFSYA5.js";
 import {
   Platform,
   coerceElement,
   coerceNumberProperty
-} from "./chunk-U23PXSZM.js";
+} from "./chunk-BC2DUZFE.js";
 import {
   APP_ID,
   CSP_NONCE,
@@ -41,7 +41,7 @@ import {
   ɵɵdefineInjectable,
   ɵɵdefineInjector,
   ɵɵdefineNgModule
-} from "./chunk-BF7FI6KT.js";
+} from "./chunk-K563NUYB.js";
 import {
   BehaviorSubject,
   Observable,
@@ -63,7 +63,7 @@ import {
 } from "./chunk-RSS3ODKE.js";
 import {
   __spreadValues
-} from "./chunk-WDMUDEB6.js";
+} from "./chunk-5K356HEJ.js";
 
 // node_modules/@angular/cdk/fesm2022/fake-event-detection.mjs
 function isFakeMousedownFromScreenReader(event) {
@@ -3118,9 +3118,11 @@ export {
   coerceArray,
   MediaMatcher,
   ObserversModule,
+  A11yModule,
   _IdGenerator,
   hasModifierKey,
   FocusKeyManager,
+  AriaDescriber,
   MatCommonModule
 };
-//# sourceMappingURL=chunk-N2BHUBZC.js.map
+//# sourceMappingURL=chunk-TP4H2OGN.js.map

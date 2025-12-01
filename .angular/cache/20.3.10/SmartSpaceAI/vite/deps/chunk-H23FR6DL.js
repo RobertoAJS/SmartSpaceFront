@@ -1,20 +1,19 @@
 import {
   _animationsDisabled
-} from "./chunk-KF2UQXPP.js";
+} from "./chunk-2MNGXGIJ.js";
 import {
-  MatCommonModule,
   _getEventTarget,
   isFakeMousedownFromScreenReader,
   isFakeTouchstartFromScreenReader,
   normalizePassiveListenerOptions
-} from "./chunk-N2BHUBZC.js";
+} from "./chunk-TP4H2OGN.js";
 import {
   _CdkPrivateStyleLoader
-} from "./chunk-XFYNVBOO.js";
+} from "./chunk-EAIKLXOI.js";
 import {
   Platform,
   coerceElement
-} from "./chunk-U23PXSZM.js";
+} from "./chunk-BC2DUZFE.js";
 import {
   ChangeDetectionStrategy,
   Component,
@@ -23,20 +22,17 @@ import {
   InjectionToken,
   Injector,
   Input,
-  NgModule,
   NgZone,
   ViewEncapsulation,
   inject,
   setClassMetadata,
   ɵɵclassProp,
   ɵɵdefineComponent,
-  ɵɵdefineDirective,
-  ɵɵdefineInjector,
-  ɵɵdefineNgModule
-} from "./chunk-BF7FI6KT.js";
+  ɵɵdefineDirective
+} from "./chunk-K563NUYB.js";
 import {
   __spreadValues
-} from "./chunk-WDMUDEB6.js";
+} from "./chunk-5K356HEJ.js";
 
 // node_modules/@angular/material/fesm2022/ripple.mjs
 var RippleState;
@@ -642,36 +638,11 @@ var _StructuralStylesLoader = class __StructuralStylesLoader {
   }], null, null);
 })();
 
-// node_modules/@angular/material/fesm2022/ripple-module.mjs
-var MatRippleModule = class _MatRippleModule {
-  static ɵfac = function MatRippleModule_Factory(__ngFactoryType__) {
-    return new (__ngFactoryType__ || _MatRippleModule)();
-  };
-  static ɵmod = ɵɵdefineNgModule({
-    type: _MatRippleModule,
-    imports: [MatCommonModule, MatRipple],
-    exports: [MatRipple, MatCommonModule]
-  });
-  static ɵinj = ɵɵdefineInjector({
-    imports: [MatCommonModule, MatCommonModule]
-  });
-};
-(() => {
-  (typeof ngDevMode === "undefined" || ngDevMode) && setClassMetadata(MatRippleModule, [{
-    type: NgModule,
-    args: [{
-      imports: [MatCommonModule, MatRipple],
-      exports: [MatRipple, MatCommonModule]
-    }]
-  }], null, null);
-})();
-
 export {
   defaultRippleAnimationConfig,
   RippleRenderer,
   MAT_RIPPLE_GLOBAL_OPTIONS,
   MatRipple,
-  _StructuralStylesLoader,
-  MatRippleModule
+  _StructuralStylesLoader
 };
-//# sourceMappingURL=chunk-S2W67N52.js.map
+//# sourceMappingURL=chunk-H23FR6DL.js.map

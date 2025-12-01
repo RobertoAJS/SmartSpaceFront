@@ -10,8 +10,8 @@ import { Disenoservice } from '../../services/disenoservice';
   selector: 'app-diseno-view',
   standalone: true,
   imports: [CommonModule],
-  templateUrl: './diseno-view.component.html',
-  styleUrls: ['./diseno-view.component.css'],
+  templateUrl: './diseno-view.html',
+  styleUrls: ['./diseno-view.css'],
   schemas: [CUSTOM_ELEMENTS_SCHEMA] 
 })
 export class DisenoViewComponent implements OnInit {
