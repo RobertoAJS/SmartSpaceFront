@@ -1,21 +1,60 @@
-<div class="visor-container">
-  <h1>Visualizador de Diseño</h1>
+<div class="container">
+  
+  <!-- Mensaje de carga -->
+  <div *ngIf="loading" class="loading-msg">
+    <p>Cargando tu diseño...</p>
+    <mat-spinner diameter="40"></mat-spinner>
+  </div>
 
-  <model-viewer
-    [src]="modeloUrl"
-    alt="Un modelo 3D del diseño"
-    auto-rotate
-    camera-controls
-    shadow-intensity="1"
-    ar
-    style="width: 100%; height: 500px; background-color: #f0f0f0;"
-  >
-    <div slot="progress-bar">
-      <span style="color: grey;">Cargando modelo...</span>
-    </div>
+  <!-- Tarjeta del Diseño -->
+  <div *ngIf="!loading && diseno" class="viewer-card">
     
-    <div slot="error" style="color: red;">
-      No se pudo cargar el modelo 3D.
+    <div class="header-info">
+      <h1>{{ diseno.nombre }}</h1>
+      <span class="badge">{{ diseno.estado }}</span>
     </div>
-  </model-viewer>
+
+    <!-- DEBUG: Esto te mostrará qué link está intentando abrir. Borralo cuando funcione -->
+    <p style="font-size: 12px; color: #888; word-break: break-all;">
+      <strong>Link del modelo:</strong> {{ diseno.urlModelo3d }}
+    </p>
+
+    <!-- EL VISUALIZADOR -->
+    <div class="model-wrapper">
+      <!-- OJO AQUÍ: Usamos [src] con corchetes para que sea dinámico -->
+      <model-viewer
+        [src]="diseno.urlModelo3d"
+        alt="Modelo 3D subido por el usuario"
+        ar
+        ar-modes="scene-viewer webxr quick-look"
+        camera-controls
+        auto-rotate
+        shadow-intensity="1"
+        style="width: 100%; height: 500px; background-color: #f5f5f5;"
+      >
+        <!-- Botón AR Flotante -->
+        <button slot="ar-button" class="ar-button">
+          👋 Ver en mi espacio
+        </button>
+
+        <!-- Mensaje si falla la carga del modelo -->
+        <div id="error" slot="error-message" class="error-msg">
+          No se pudo cargar el modelo 3D.
+        </div>
+
+      </model-viewer>
+    </div>
+
+    <div class="footer-info">
+      <p><strong>Fecha de creación:</strong> {{ diseno.fechaCreacion | date:'short' }}</p>
+      <button mat-button color="primary" routerLink="/muebles">Volver a la lista</button>
+    </div>
+
+  </div>
+
+  <!-- Mensaje si no se encuentra -->
+  <div *ngIf="!loading && !diseno.idDiseno" class="error-card">
+    <h3>Diseño no encontrado</h3>
+    <button mat-button routerLink="/muebles">Volver</button>
+  </div>
 </div>
