@@ -55,6 +55,7 @@ export const routes: Routes = [
     // Usamos 'children' directamente o rutas planas. Aquí uso rutas planas agrupadas:
     canActivate: [authGuard], 
     children: [
+
         // 1. Ruta para SUBIR (Recibe el ID del mueble al que le vas a poner el diseño)
         // Ejemplo: /disenos/subir/5
         { path: 'subir/:id', component: SubirDisenoComponent },
@@ -62,8 +63,13 @@ export const routes: Routes = [
         // 2. Ruta para VER (Recibe el ID del diseño para mostrarlo en 3D)
         // Ejemplo: /disenos/ver/10
         { path: 'ver/:id', component: DisenoViewComponent }
+        
+
     ]
   },
+
+
+
 
 
   { path: 'disenos/subir/:id', component: SubirDisenoComponent },

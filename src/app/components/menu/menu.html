@@ -70,10 +70,29 @@
     <button mat-menu-item routerLink="/muebles/searchs">
       <mat-icon>search</mat-icon>
       <span>Buscar</span>
-    </button>
-
-    <li><a routerLink="/reportes" routerLinkActive="active">Reportes</a></li>
+    </button>  
   </mat-menu>
+
+
+  
+  <mat-menu #menuDisenos="matMenu">
+    <button mat-menu-item routerLink="/disenos">
+      <mat-icon>list</mat-icon>
+      <span>Listar</span>
+    </button>
+  
+    <button mat-menu-item routerLink="/disenos/news">
+      <mat-icon>add</mat-icon>
+      <span>Registrar</span>
+    </button>
+    
+    <button mat-menu-item routerLink="/disenos/searchs">
+      <mat-icon>search</mat-icon>
+      <span>Buscar</span>
+    </button>  
+  </mat-menu>
+
+  
 
   <!-- Menú Salir -->
   <mat-menu #menuSalir="matMenu">
