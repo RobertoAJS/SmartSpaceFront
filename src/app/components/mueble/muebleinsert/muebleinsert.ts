@@ -14,11 +14,13 @@ import { Muebleservice } from '../../../services/muebleservice';
 import { Mueble } from '../../../models/mueble';
 import { ActivatedRoute, Params, Router, RouterLink } from '@angular/router';
 import { Authservice } from '../../../services/authservice';
+import { MatSelectModule } from '@angular/material/select';
 
 @Component({
   selector: 'app-muebleinsert',
   standalone: true,
   imports: [
+    MatSelectModule,
     CommonModule,
     ReactiveFormsModule,
     MatFormFieldModule,
@@ -35,6 +37,18 @@ export class Muebleinsert implements OnInit {
   mueble: Mueble = new Mueble();
   id: number = 0;
   edicion: boolean = false;
+
+  listaCategorias: string[] = [
+    'Sala','Dormitorio','Comedor','Cocina','Oficina','Baño','Infantil','Exterior','Otro'
+  ];
+
+  listaEstilos: string[] = [
+    'Sala','Dormitorio','Comedor','Cocina','Oficina','Baño','Infantil','Exterior','Otro'
+  ]; 
+
+
+
+
 
   constructor(
     private mS: Muebleservice,
