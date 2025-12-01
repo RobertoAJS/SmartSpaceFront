@@ -15,6 +15,9 @@ import { Disenoservice } from '../../services/disenoservice';
   schemas: [CUSTOM_ELEMENTS_SCHEMA] 
 })
 export class DisenoViewComponent implements OnInit {
+
+
+  modeloUrl: string = 'https://modelviewer.dev/shared-assets/models/Astronaut.glb';
   
   // Inicializamos vacío para evitar errores de "null" en el HTML
   diseno: Diseno = new Diseno(); 

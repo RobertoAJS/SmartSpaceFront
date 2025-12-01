@@ -1,1 +1,21 @@
-<p>diseno-view works!</p>
+<div class="visor-container">
+  <h1>Visualizador de Diseño</h1>
+
+  <model-viewer
+    [src]="modeloUrl"
+    alt="Un modelo 3D del diseño"
+    auto-rotate
+    camera-controls
+    shadow-intensity="1"
+    ar
+    style="width: 100%; height: 500px; background-color: #f0f0f0;"
+  >
+    <div slot="progress-bar">
+      <span style="color: grey;">Cargando modelo...</span>
+    </div>
+    
+    <div slot="error" style="color: red;">
+      No se pudo cargar el modelo 3D.
+    </div>
+  </model-viewer>
+</div>
