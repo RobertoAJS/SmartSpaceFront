@@ -9,25 +9,25 @@
       <!-- ID -->
       <ng-container matColumnDef="c1">
         <th mat-header-cell *matHeaderCellDef>No.</th>
-        <td mat-cell *matCellDef="let m">{{ m.idMueble }}</td>
+        <td mat-cell *matCellDef="let m" data-label="No.">{{ m.idMueble }}</td>
       </ng-container>
 
       <!-- NOMBRE -->
       <ng-container matColumnDef="c2">
         <th mat-header-cell *matHeaderCellDef>Nombre</th>
-        <td mat-cell *matCellDef="let m">{{ m.nombre }}</td>
+        <td mat-cell *matCellDef="let m" data-label="Nombre">{{ m.nombre }}</td>
       </ng-container>
 
       <!-- CATEGORÍA -->
       <ng-container matColumnDef="c3">
         <th mat-header-cell *matHeaderCellDef>Categoría</th>
-        <td mat-cell *matCellDef="let m">{{ m.categoria }}</td>
+        <td mat-cell *matCellDef="let m" data-label="Categoría">{{ m.categoria }}</td>
       </ng-container>
 
       <!-- DIMENSIONES (Combinadas) -->
       <ng-container matColumnDef="c4">
         <th mat-header-cell *matHeaderCellDef>Dimensiones (cm)</th>
-        <td mat-cell *matCellDef="let m">
+        <td mat-cell *matCellDef="let m" data-label="Dimensiones (cm)">
            {{ m.alto }} x {{ m.ancho }} x {{ m.profundidad }}
         </td>
       </ng-container>
@@ -35,19 +35,19 @@
       <!-- ESTILO -->
       <ng-container matColumnDef="c5">
         <th mat-header-cell *matHeaderCellDef>Estilo</th>
-        <td mat-cell *matCellDef="let m">{{ m.estilo }}</td>
+        <td mat-cell *matCellDef="let m" data-label="Estilo">{{ m.estilo }}</td>
       </ng-container>
 
       <!-- PRECIO -->
       <ng-container matColumnDef="c6">
         <th mat-header-cell *matHeaderCellDef>Precio</th>
-        <td mat-cell *matCellDef="let m">S/. {{ m.precio | number : '1.2-2' }}</td>
+        <td mat-cell *matCellDef="let m" data-label="Precio">S/. {{ m.precio | number : '1.2-2' }}</td>
       </ng-container>
 
       <!-- SOSTENIBLE -->
       <ng-container matColumnDef="c7">
         <th mat-header-cell *matHeaderCellDef>Sostenible</th>
-        <td mat-cell *matCellDef="let m">
+        <td mat-cell *matCellDef="let m" data-label="Sostenible">
           <mat-icon [ngClass]="{'icon-green': m.sostenibilidad, 'icon-gray': !m.sostenibilidad}">
             {{ m.sostenibilidad ? 'check_circle' : 'cancel' }}
           </mat-icon>
@@ -57,7 +57,7 @@
       <!-- SOFTWARE -->
       <ng-container matColumnDef="c8">
         <th mat-header-cell *matHeaderCellDef>Software</th>
-        <td mat-cell *matCellDef="let m">{{ m.programaDev }}</td>
+        <td mat-cell *matCellDef="let m" data-label="Software">{{ m.programaDev }}</td>
       </ng-container>
 
       <!-- ================= ACCIONES ================= -->
@@ -65,7 +65,7 @@
       <!-- c9: SUBIR ARCHIVO 3D -->
       <ng-container matColumnDef="c9">
         <th mat-header-cell *matHeaderCellDef>Subir</th>
-        <td mat-cell *matCellDef="let m">
+        <td mat-cell *matCellDef="let m" data-label="Subir">
           <button mat-icon-button color="primary" [routerLink]="['/disenos/subir', m.idMueble]" matTooltip="Subir archivo 3D">
             <mat-icon>cloud_upload</mat-icon>
           </button>
@@ -75,7 +75,7 @@
       <!-- c12: VER MODELO AR (Nueva Columna) -->
       <ng-container matColumnDef="c12">
         <th mat-header-cell *matHeaderCellDef>Ver 3D</th>
-        <td mat-cell *matCellDef="let m">
+        <td mat-cell *matCellDef="let m" data-label="Ver 3D">
           <!-- Usamos *ngIf con la función auxiliar del TS para obtener el ID del último diseño -->
           <ng-container *ngIf="getUltimoDisenoId(m) as idDiseno; else noModel">
             <button mat-icon-button color="accent" 
@@ -95,7 +95,7 @@
       <!-- EDITAR -->
       <ng-container matColumnDef="c10">
         <th mat-header-cell *matHeaderCellDef>Editar</th>
-        <td mat-cell *matCellDef="let m">
+        <td mat-cell *matCellDef="let m" data-label="Editar">
           <button mat-icon-button [routerLink]="['/muebles/edits', m.idMueble]">
             <mat-icon>edit</mat-icon>
           </button>
@@ -105,7 +105,7 @@
       <!-- ELIMINAR -->
       <ng-container matColumnDef="c11">
         <th mat-header-cell *matHeaderCellDef>Borrar</th>
-        <td mat-cell *matCellDef="let m">
+        <td mat-cell *matCellDef="let m" data-label="Borrar">
           <button mat-icon-button color="warn" (click)="eliminar(m.idMueble!)">
             <mat-icon>delete</mat-icon>
           </button>

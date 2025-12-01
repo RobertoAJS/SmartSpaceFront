@@ -1,58 +1,96 @@
-.container {
-  padding: 2% 5%;
+/* ESTILOS POR DEFECTO (Mobile First) */
+.filter-grid {
+    /* Por defecto, una columna */
+    grid-template-columns: repeat(1, 1fr);
+    gap: 16px;
 }
 
-.header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 16px;
+/* MEDIA QUERY: Aplica solo cuando el ancho de la pantalla sea de 768px o más (Desktop/Tablet) */
+@media (min-width: 768px) {
+    .filter-grid {
+        /* Cambia a cuatro columnas en pantallas más grandes */
+        grid-template-columns: 2fr repeat(3, 1fr);
+    }
 }
 
-.header h1 {
-  margin: 0;
-}
+/* ================================================= */
+/* NUEVOS ESTILOS PARA LA TABLA RESPONSIVA EN MÓVIL */
+/* ================================================= */
 
-/* Botones como los de proveedor / usuario */
-button[matButton] {
-  font-size: 0.8rem;
-  font-weight: 500;
-  border-radius: 6px;
-  padding: 4px 12px;
-  color: rgb(240, 244, 241);
-  text-transform: none;
-  transition: all 0.25s ease;
-  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.15);
-  background-color: rgb(251, 140, 0);
-}
+@media (max-width: 767px) {
+    .mat-mdc-table {
+        /* Fuerza la tabla a ocupar el 100% y elimina el scroll horizontal */
+        border: none;
+        width: 100%;
+    }
 
-button[matButton]:hover {
-  background-color: rgb(15, 203, 71);
-}
+    /* Oculta la fila de encabezados por defecto en móvil */
+    .mat-mdc-header-row {
+        display: none;
+    }
 
-.table-wrapper {
-  margin-top: 16px;
-}
+    /* Muestra cada fila como un bloque (tarjeta) */
+    .mat-mdc-row {
+        flex-direction: column;
+        align-items: flex-start;
+        border: 1px solid #ddd;
+        margin-bottom: 10px;
+        padding: 10px;
+        box-sizing: border-box;
+        height: auto !important; /* Anula la altura fija de Angular Material */
+        border-radius: 8px;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+        
+        /* Regla específica: usar GRID para 2 columnas */
+        display: grid;
+        grid-template-columns: 1fr 1fr; /* Dos columnas de ancho igual */
+        grid-auto-flow: row;
+    }
 
-.full-width-table {
-  width: 100%;
-}
+    /* Muestra cada celda como un elemento de bloque */
+    .mat-mdc-cell {
+        padding: 4px 8px;
+        width: 100%; /* Ocupa todo el ancho de la tarjeta */
+        display: flex; /* Usamos flexbox para la distribución interna de la celda */
+        justify-content: space-between; /* Alinea contenido y etiqueta */
+        border: none; /* Elimina separadores de celdas */
+        font-size: 0.9rem;
+    }
 
-.no-data {
-  margin-top: 12px;
-  font-size: 0.9rem;
-  color: #555;
-}
+    /* Estilo para la etiqueta de columna (visible solo en móvil) */
+    .mat-mdc-cell::before {
+        /* Contenedor para el nombre de la columna */
+        content: attr(data-label); /* Usa el atributo data-label del HTML */
+        font-weight: 600;
+        color: #4f46e5; /* Color principal */
+        margin-right: 10px;
+        min-width: 100px; /* Ancho fijo para las etiquetas */
+        text-align: left;
+    }
+    
+    /* ASIGNACIONES DE CUADRÍCULA para mantener el orden 2 columnas */
+    
+    /* Primera fila (1, 2) */
+    .mat-column-c1 { grid-column: 1 / 2; order: 1; }
+    .mat-column-c2 { grid-column: 2 / 3; order: 2; }
+    
+    /* Segunda fila (3, 4) */
+    .mat-column-c3 { grid-column: 1 / 2; order: 3; }
+    .mat-column-c4 { grid-column: 2 / 3; order: 4; }
+    
+    /* Tercera fila (5, 6) */
+    .mat-column-c5 { grid-column: 1 / 2; order: 5; }
+    .mat-column-c6 { grid-column: 2 / 3; order: 6; }
+    
+    /* Cuarta fila (7, 8) */
+    .mat-column-c7 { grid-column: 1 / 2; order: 7; }
+    .mat-column-c8 { grid-column: 2 / 3; order: 8; }
 
-@media (max-width: 768px) {
-  .header {
-    flex-direction: column;
-    gap: 8px;
-    align-items: flex-start;
-  }
+    /* Fila de Acciones 1 (9, 12) */
+    .mat-column-c9 { grid-column: 1 / 2; order: 9; }
+    .mat-column-c12 { grid-column: 2 / 3; order: 10; }
 
-  button[matButton] {
-    font-size: 0.7rem;
-    padding: 3px 8px;
-  }
+    /* Fila de Acciones 2 (10, 11) */
+    .mat-column-c10 { grid-column: 1 / 2; order: 11; }
+    .mat-column-c11 { grid-column: 2 / 3; order: 12; }
 }
