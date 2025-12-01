@@ -1,31 +1,37 @@
 <div class="container">
   <div class="card">
-    <h2>Agregar Modelo 3D</h2>
-    <p class="subtitle">Asociando diseño al Mueble #{{ idMueble }}</p>
+    <h2>Subir Modelo 3D</h2>
+    <p class="info-text">Estás agregando un diseño para el Mueble ID: <strong>{{ idMueble }}</strong></p>
 
     <form (ngSubmit)="subir()">
       
-      <mat-form-field appearance="outline" class="full-width">
-        <mat-label>Nombre del Diseño</mat-label>
-        <input matInput [(ngModel)]="nombreDiseno" name="nombre" required placeholder="Ej: Versión Moderna v1">
-      </mat-form-field>
+      <div class="form-group">
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Nombre del Diseño</mat-label>
+          <input matInput [(ngModel)]="nombreDiseno" name="nombre" required placeholder="Ej: Versión Final v1">
+        </mat-form-field>
+      </div>
 
-      <div class="file-input-container">
-        <label for="fileUpload" class="custom-file-upload">
-          <mat-icon>cloud_upload</mat-icon> Seleccionar Archivo 3D (.glb)
-        </label>
-        <input id="fileUpload" type="file" (change)="onFileSelected($event)" accept=".glb,.gltf,.obj" style="display:none">
-        <p *ngIf="archivoSeleccionado" class="file-name">{{ archivoSeleccionado.name }}</p>
+      <div class="form-group file-area">
+        <label class="file-label">Selecciona tu archivo (.glb):</label>
+        <input type="file" (change)="onFileSelected($event)" accept=".glb,.gltf,.obj" class="file-input">
       </div>
 
       <div class="actions">
         <button mat-raised-button color="primary" type="submit" [disabled]="!archivoSeleccionado || cargando">
-          {{ cargando ? 'Subiendo...' : 'Guardar Diseño' }}
+          <mat-icon>cloud_upload</mat-icon>
+          {{ cargando ? 'Subiendo...' : 'Subir y Guardar' }}
+        </button>
+        
+        <button mat-button color="warn" type="button" routerLink="/muebles">
+          Cancelar
         </button>
       </div>
 
     </form>
 
-    <p *ngIf="mensaje" class="msg" [class.error]="mensaje.includes('Error')">{{ mensaje }}</p>
+    <div *ngIf="mensaje" class="msg" [ngClass]="{'error': mensaje.includes('Error'), 'success': !mensaje.includes('Error')}">
+      {{ mensaje }}
+    </div>
   </div>
 </div>

@@ -1,8 +1,84 @@
-.container { display: flex; justify-content: center; padding: 2rem; }
-.card { width: 100%; max-width: 500px; background: white; padding: 2rem; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); text-align: center; }
-.full-width { width: 100%; margin-bottom: 1rem; }
-.custom-file-upload { border: 2px dashed #ccc; display: inline-block; padding: 10px 20px; cursor: pointer; border-radius: 5px; margin: 1rem 0; width: 100%; color: #666; }
-.custom-file-upload:hover { background: #f9f9f9; border-color: #1e90ff; color: #1e90ff; }
-.file-name { color: #1e90ff; font-weight: bold; margin-top: 0.5rem; }
-.msg { margin-top: 1rem; font-weight: 500; color: green; }
-.msg.error { color: red; }
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 80vh;
+  padding: 1rem;
+  background-color: #f9f9f9;
+}
+
+.card {
+  background: white;
+  padding: 2.5rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+  width: 100%;
+  max-width: 500px;
+  text-align: center;
+}
+
+h2 {
+  color: #333;
+  margin-bottom: 0.5rem;
+}
+
+.info-text {
+  color: #666;
+  margin-bottom: 2rem;
+  font-size: 0.9rem;
+}
+
+.form-group {
+  margin-bottom: 1.5rem;
+  text-align: left;
+}
+
+.full-width {
+  width: 100%;
+}
+
+/* Estilo para el área del archivo */
+.file-area {
+  background: #f0f4ff;
+  padding: 1rem;
+  border-radius: 8px;
+  border: 1px dashed #1e90ff;
+}
+
+.file-label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+  color: #444;
+}
+
+.file-input {
+  width: 100%;
+  padding: 0.5rem;
+  background: white;
+  border-radius: 4px;
+}
+
+.actions {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  margin-top: 2rem;
+}
+
+.msg {
+  margin-top: 1.5rem;
+  padding: 1rem;
+  border-radius: 6px;
+  font-weight: 500;
+}
+
+.msg.success {
+  background-color: #d4edda;
+  color: #155724;
+}
+
+.msg.error {
+  background-color: #f8d7da;
+  color: #721c24;
+}

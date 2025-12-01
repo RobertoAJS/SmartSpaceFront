@@ -56,7 +56,7 @@ export const routes: Routes = [
     children: [
         // 1. Ruta para SUBIR (Recibe el ID del mueble al que le vas a poner el diseño)
         // Ejemplo: /disenos/subir/5
-        { path: 'subir/:id', component: DisenoViewComponent },
+        { path: 'subir/:id', component: SubirDisenoComponent },
 
         // 2. Ruta para VER (Recibe el ID del diseño para mostrarlo en 3D)
         // Ejemplo: /disenos/ver/10
