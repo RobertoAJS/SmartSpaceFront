@@ -56,7 +56,7 @@ export class Mueblesearch {
       return;
     }
 
-    this.mS.searchName(termino).subscribe((data) => {
+    this.mS.searchCategory(termino).subscribe((data) => {
       this.dataSource = new MatTableDataSource(data);
       this.mensaje = data.length === 0 ? 'No se encontraron muebles.' : '';
     });
