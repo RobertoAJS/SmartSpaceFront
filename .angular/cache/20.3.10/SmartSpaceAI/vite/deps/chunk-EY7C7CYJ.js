@@ -1,9 +1,9 @@
 import {
-  _animationsDisabled
-} from "./chunk-2MNGXGIJ.js";
-import {
   coerceBooleanProperty
 } from "./chunk-46HAYV32.js";
+import {
+  _animationsDisabled
+} from "./chunk-2MNGXGIJ.js";
 import {
   MatCommonModule,
   ObserversModule,
@@ -1680,4 +1680,4 @@ export {
   MatFormField,
   MatFormFieldModule
 };
-//# sourceMappingURL=chunk-AH2A2Y52.js.map
+//# sourceMappingURL=chunk-EY7C7CYJ.js.map

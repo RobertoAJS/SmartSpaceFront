@@ -1,21 +1,24 @@
 import {
-  ComponentPortal,
   OverlayModule,
   createFlexibleConnectedPositionStrategy,
   createOverlayRef,
   createRepositionScrollStrategy
-} from "./chunk-FKIOHDKK.js";
+} from "./chunk-KOT7KWZ4.js";
+import {
+  ComponentPortal
+} from "./chunk-M4VHGR7I.js";
 import {
   CdkScrollableModule,
   ScrollDispatcher
-} from "./chunk-5JQMIGXB.js";
+} from "./chunk-6TXC3N3K.js";
+import "./chunk-2IHTCUV6.js";
+import {
+  coerceBooleanProperty
+} from "./chunk-46HAYV32.js";
 import {
   _animationsDisabled
 } from "./chunk-2MNGXGIJ.js";
 import "./chunk-NI254LPS.js";
-import {
-  coerceBooleanProperty
-} from "./chunk-46HAYV32.js";
 import {
   A11yModule,
   AriaDescriber,
