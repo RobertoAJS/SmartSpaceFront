@@ -35,26 +35,34 @@ export class Mueblelistar implements OnInit {
     this.role = this.authService.getRole();
 
     // CONFIGURACIÓN DE COLUMNAS
-    // c8: Software, c9: Subir 3D, c10: Editar, c11: Eliminar
+    // c8: Software, c9: Subir 3D, 
     if (this.role === 'ADMIN' || this.role === 'CLIENTE') {
       // Ambos roles deberían poder ver y gestionar sus muebles (incluyendo subir 3D)
       this.displayedColumns = [
-        'c1', 'c2', 'c3', 'c4', 'c5', 'c6', 'c7', 'c8', 'c9', 'c10', 'c11'
+        'c1', 'c2', 'c3', 'c4', 'c5', 'c6', 'c7', 'c8', 
+        'c9',       // Subir 3D
+        'ver3d', // <--- Ver el modelo
+        'c10', 'c11' //c10: Editar, c11: Eliminar
       ];
     } else {
       // Visitante (Solo lectura)
-      this.displayedColumns = ['c1', 'c2', 'c3', 'c4', 'c5', 'c6', 'c7', 'c8'];
+      this.displayedColumns = ['c1', 'c2', 'c3', 'c4', 'c5', 'c6', 'c7', 'c8', 'ver3d'];
     }
 
-    // LISTAR DATOS
-    this.mS.list().subscribe((data) => {
-      this.dataSource = new MatTableDataSource(data);
-    });
-
+    this.cargarDatos();
     this.mS.getList().subscribe((data) => {
       this.dataSource = new MatTableDataSource(data);
     });
   }
+  
+  cargarDatos() {
+    this.mS.list().subscribe((data) => {
+      this.dataSource = new MatTableDataSource(data);
+    });
+  }
+
+
+  
 
   eliminar(id: number): void {
     if (!confirm('¿Seguro que deseas eliminar este mueble?')) return;
@@ -65,4 +73,16 @@ export class Mueblelistar implements OnInit {
       });
     });
   }
+
+  // Obtiene el ID del último diseño subido para ese mueble
+  getUltimoDisenoId(mueble: Mueble): number | null {
+    if (mueble.disenos && mueble.disenos.length > 0) {
+      // Asumimos que el último de la lista es el más reciente (o tomamos el índice 0 si el back lo ordena al revés)
+      // Aquí tomamos el último elemento del array:
+      return mueble.disenos[mueble.disenos.length - 1].idDiseno;
+    }
+    return null;
+  }
+
+  
 }
