@@ -32,7 +32,6 @@ import { Authservice } from '../../../services/authservice';
 export class Muebleinsert implements OnInit {
   form: FormGroup = new FormGroup({});
   mueble: Mueble = new Mueble();
-
   id: number = 0;
   edicion: boolean = false;
 
@@ -93,24 +92,18 @@ export class Muebleinsert implements OnInit {
     }
 
 
-    this.mueble.nombre = this.form.value.nombre;
-    this.mueble.categoria = this.form.value.categoria;
-    
-    // Asignamos los nuevos valores
-    this.mueble.alto = this.form.value.alto;
-    this.mueble.ancho = this.form.value.ancho;
-    this.mueble.profundidad = this.form.value.profundidad;
-    
-    this.mueble.estilo = this.form.value.estilo;
-    this.mueble.precio = this.form.value.precio;
-    this.mueble.descripcion = this.form.value.descripcion;
-    this.mueble.programaDev = this.form.value.programaDev;
-    this.mueble.sostenibilidad = this.form.value.sostenibilidad;
-    this.mueble.idUsuario=this.form.value.idUsuario;
+   this.mueble = {
+      ...this.mueble,
+      ...this.form.value,
+      idUsuario: userId
+    };
 
 
+
+    
    if (this.edicion) {
       this.mueble.idMueble = this.id;
+
       this.mS.update(this.mueble).subscribe(() => {
         this.mS.list().subscribe((data) => this.mS.setList(data));
         this.router.navigate(['/muebles']);
