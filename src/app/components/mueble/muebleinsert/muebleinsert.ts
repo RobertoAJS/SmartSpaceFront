@@ -43,10 +43,12 @@ export class Muebleinsert implements OnInit {
   ];
 
   listaEstilos: string[] = [
-    'Sala','Dormitorio','Comedor','Cocina','Oficina','Baño','Infantil','Exterior','Otro'
+    'Moderno','Contemporaneo','Minimalista','Industrial','Clasico','Japandi','Divertido','Otro'
   ]; 
 
-
+   listaSoftware: string[] = [
+    'Blender', 'AutoCAD', 'SketchUp', '3ds Max', 'Revit', 'Cinema 4D', 'Maya', 'Otro'
+  ];
 
 
 

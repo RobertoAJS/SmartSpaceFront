@@ -13,6 +13,7 @@
     }
 
     <div class="row">
+      <!-- Nombre (Sigue siendo libre) -->
       <mat-form-field appearance="outline">
         <mat-label>Nombre</mat-label>
         <input matInput formControlName="nombre" placeholder="Ej: Silla Gamer" />
@@ -21,11 +22,16 @@
         }
       </mat-form-field>
 
+      <!-- CATEGORÍA (COMBO BOX) -->
       <mat-form-field appearance="outline">
         <mat-label>Categoría</mat-label>
-        <input matInput formControlName="categoria" placeholder="Ej: Oficina" />
+        <mat-select formControlName="categoria">
+          @for (cat of listaCategorias; track cat) {
+            <mat-option [value]="cat">{{ cat }}</mat-option>
+          }
+        </mat-select>
         @if (form.get('categoria')?.hasError('required')) {
-        <mat-error>La categoría es obligatoria.</mat-error>
+        <mat-error>Requerido</mat-error>
         }
       </mat-form-field>
     </div>
@@ -35,60 +41,59 @@
       <mat-form-field appearance="outline">
         <mat-label>Alto</mat-label>
         <input matInput type="number" formControlName="alto" min="0" />
-        @if (form.get('alto')?.hasError('required')) {
-        <mat-error>Requerido</mat-error>
-        }
       </mat-form-field>
 
       <mat-form-field appearance="outline">
         <mat-label>Ancho</mat-label>
         <input matInput type="number" formControlName="ancho" min="0" />
-        @if (form.get('ancho')?.hasError('required')) {
-        <mat-error>Requerido</mat-error>
-        }
       </mat-form-field>
 
       <mat-form-field appearance="outline">
         <mat-label>Profundidad</mat-label>
         <input matInput type="number" formControlName="profundidad" min="0" />
-        @if (form.get('profundidad')?.hasError('required')) {
-        <mat-error>Requerido</mat-error>
-        }
       </mat-form-field>
     </div>
 
     <div class="row">
+      <!-- ESTILO (COMBO BOX) -->
       <mat-form-field appearance="outline">
         <mat-label>Estilo</mat-label>
-        <input matInput formControlName="estilo" placeholder="Ej: Moderno" />
+        <mat-select formControlName="estilo">
+           @for (est of listaEstilos; track est) {
+            <mat-option [value]="est">{{ est }}</mat-option>
+          }
+        </mat-select>
         @if (form.get('estilo')?.hasError('required')) {
-        <mat-error>El estilo es obligatorio.</mat-error>
+        <mat-error>Requerido</mat-error>
         }
       </mat-form-field>
 
       <mat-form-field appearance="outline">
         <mat-label>Precio</mat-label>
         <input matInput type="number" formControlName="precio" min="0" />
-        @if (form.get('precio')?.hasError('required')) {
-        <mat-error>El precio es obligatorio.</mat-error>
-        }
+        <span matTextPrefix>S/.&nbsp;</span>
       </mat-form-field>
     </div>
 
     <div class="row">
+      <!-- SOFTWARE (COMBO BOX) -->
       <mat-form-field appearance="outline">
         <mat-label>Software de Diseño</mat-label>
-        <input matInput formControlName="programaDev" placeholder="Ej: Blender, AutoCAD" />
+        <mat-select formControlName="programaDev">
+           @for (prog of listaSoftware; track prog) {
+            <mat-option [value]="prog">{{ prog }}</mat-option>
+          }
+        </mat-select>
       </mat-form-field>
 
       <mat-form-field appearance="outline">
         <mat-label>Descripción</mat-label>
-        <textarea matInput formControlName="descripcion" placeholder="Detalles adicionales..."></textarea>
+        <textarea matInput formControlName="descripcion" placeholder="Detalles..."></textarea>
       </mat-form-field>
     </div>
 
     <div class="checkbox-container">
-      <mat-checkbox formControlName="sostenibilidad">Es un producto sostenible</mat-checkbox>
+      <mat-checkbox formControlName="sostenibilidad">¿Es un producto hecho por IA?</mat-checkbox>
     </div>
 
     <div class="actions">
