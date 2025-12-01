@@ -11,5 +11,5 @@ export class Mueble {
     descripcion: string = "";
     sostenibilidad: boolean = false;
     programaDev: string = "";
-    idUsuario: number = 0; 
+    idUsuario?: number; 
 }
