@@ -1,0 +1,31 @@
+<div class="container">
+  <div class="card">
+    <h2>Agregar Modelo 3D</h2>
+    <p class="subtitle">Asociando diseño al Mueble #{{ idMueble }}</p>
+
+    <form (ngSubmit)="subir()">
+      
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Nombre del Diseño</mat-label>
+        <input matInput [(ngModel)]="nombreDiseno" name="nombre" required placeholder="Ej: Versión Moderna v1">
+      </mat-form-field>
+
+      <div class="file-input-container">
+        <label for="fileUpload" class="custom-file-upload">
+          <mat-icon>cloud_upload</mat-icon> Seleccionar Archivo 3D (.glb)
+        </label>
+        <input id="fileUpload" type="file" (change)="onFileSelected($event)" accept=".glb,.gltf,.obj" style="display:none">
+        <p *ngIf="archivoSeleccionado" class="file-name">{{ archivoSeleccionado.name }}</p>
+      </div>
+
+      <div class="actions">
+        <button mat-raised-button color="primary" type="submit" [disabled]="!archivoSeleccionado || cargando">
+          {{ cargando ? 'Subiendo...' : 'Guardar Diseño' }}
+        </button>
+      </div>
+
+    </form>
+
+    <p *ngIf="mensaje" class="msg" [class.error]="mensaje.includes('Error')">{{ mensaje }}</p>
+  </div>
+</div>

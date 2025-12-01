@@ -12,6 +12,8 @@ import { Mueble } from './components/mueble/mueble';
 import { Mueblelistar } from './components/mueble/mueblelistar/mueblelistar';
 import { Muebleinsert } from './components/mueble/muebleinsert/muebleinsert';
 import { Mueblesearch } from './components/mueble/mueblesearch/mueblesearch';
+import { DisenoViewComponent } from './components/diseno-view/diseno-view';
+import { SubirDisenoComponent } from './components/diseno/subir-diseno/subir-diseno';
 
 export const routes: Routes = [
   { path: 'landing', component: Landing }, // Landing pública
@@ -44,6 +46,28 @@ export const routes: Routes = [
       { path: 'searchs', component: Mueblesearch },
     ],
   },
+
+// --- NUEVAS RUTAS DE DISEÑOS (3D) ---
+  {
+    path: 'disenos',
+    // No ponemos componente padre (como Mueble/Usuario) si no tienes uno contenedor.
+    // Usamos 'children' directamente o rutas planas. Aquí uso rutas planas agrupadas:
+    canActivate: [authGuard], 
+    children: [
+        // 1. Ruta para SUBIR (Recibe el ID del mueble al que le vas a poner el diseño)
+        // Ejemplo: /disenos/subir/5
+        { path: 'subir/:id', component: DisenoViewComponent },
+
+        // 2. Ruta para VER (Recibe el ID del diseño para mostrarlo en 3D)
+        // Ejemplo: /disenos/ver/10
+        { path: 'ver/:id', component: DisenoViewComponent }
+    ]
+  },
+
+
+  { path: 'disenos/subir/:id', component: SubirDisenoComponent },
+
+
 
   { path: '', redirectTo: 'landing', pathMatch: 'full' },
   { path: '**', redirectTo: 'landing' },

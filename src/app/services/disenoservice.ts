@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { environment } from '../../environments/environments';
 import { Observable, Subject } from 'rxjs';
-import { Diseno } from '../models/diseno';
+import { Diseno } from '../models/diseno'; // Asegúrate de que la ruta sea correcta
 import { HttpClient } from '@angular/common/http';
 
 const base_url = environment.base;
@@ -15,16 +15,27 @@ export class Disenoservice {
 
   constructor(private http: HttpClient) {}
 
-  // MÉTODO CLAVE: Recibe FormData, no un objeto simple
+  // 1. Subir archivo (FormData)
   subirDiseno(formData: FormData): Observable<any> {
     return this.http.post(`${this.url}/subir`, formData);
   }
 
+  // 2. Listar todos
   list(): Observable<Diseno[]> {
     return this.http.get<Diseno[]>(this.url);
   }
 
-  // Getters y Setters para la tabla reactiva
-  setList(lista: Diseno[]) { this.listaCambio.next(lista); }
-  getList() { return this.listaCambio.asObservable(); }
+  // 3. --- NUEVO: Buscar por ID (Necesario para el visualizador) ---
+  listId(id: number): Observable<Diseno> {
+    return this.http.get<Diseno>(`${this.url}/${id}`);
+  }
+
+  // 4. Métodos reactivos
+  setList(lista: Diseno[]) {
+    this.listaCambio.next(lista);
+  }
+
+  getList() {
+    return this.listaCambio.asObservable();
+  }
 }

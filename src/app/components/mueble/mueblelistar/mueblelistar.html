@@ -1,74 +1,79 @@
 <div class="container">
   <div class="header">
     <h1>Lista de muebles</h1>
-
   </div>
 
   <div class="table-wrapper">
     <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 full-width-table">
-      <!-- ID -->
+      
       <ng-container matColumnDef="c1">
         <th mat-header-cell *matHeaderCellDef>No.</th>
         <td mat-cell *matCellDef="let m">{{ m.idMueble }}</td>
       </ng-container>
 
-      <!-- NOMBRE -->
       <ng-container matColumnDef="c2">
         <th mat-header-cell *matHeaderCellDef>Nombre</th>
         <td mat-cell *matCellDef="let m">{{ m.nombre }}</td>
       </ng-container>
 
-      <!-- CATEGORÍA -->
       <ng-container matColumnDef="c3">
         <th mat-header-cell *matHeaderCellDef>Categoría</th>
         <td mat-cell *matCellDef="let m">{{ m.categoria }}</td>
       </ng-container>
 
-      <!-- DIMENSIÓN -->
       <ng-container matColumnDef="c4">
-        <th mat-header-cell *matHeaderCellDef>Dimensión</th>
-        <td mat-cell *matCellDef="let m">{{ m.dimension }}</td>
+        <th mat-header-cell *matHeaderCellDef>Dimensiones (cm)</th>
+        <td mat-cell *matCellDef="let m">
+           {{ m.alto }} x {{ m.ancho }} x {{ m.profundidad }}
+        </td>
       </ng-container>
 
-      <!-- ESTILO -->
       <ng-container matColumnDef="c5">
         <th mat-header-cell *matHeaderCellDef>Estilo</th>
         <td mat-cell *matCellDef="let m">{{ m.estilo }}</td>
       </ng-container>
 
-      <!-- PRECIO -->
       <ng-container matColumnDef="c6">
         <th mat-header-cell *matHeaderCellDef>Precio</th>
         <td mat-cell *matCellDef="let m">S/. {{ m.precio | number : '1.2-2' }}</td>
       </ng-container>
 
-      <!-- SOSTENIBLE -->
       <ng-container matColumnDef="c7">
         <th mat-header-cell *matHeaderCellDef>Sostenible</th>
-        <td mat-cell *matCellDef="let m">{{ m.sostenibilidad ? 'Sí' : 'No' }}</td>
-      </ng-container>
-
-      <!-- PROVEEDOR -->
-      <ng-container matColumnDef="c8">
-        <th mat-header-cell *matHeaderCellDef>Proveedor</th>
-        <td mat-cell *matCellDef="let m">{{ m.proveedor }}</td>
-      </ng-container>
-
-      <!-- ACTUALIZAR -->
-      <ng-container matColumnDef="c9">
-        <th mat-header-cell *matHeaderCellDef>Actualizar</th>
         <td mat-cell *matCellDef="let m">
-          <button matButton [routerLink]="['/muebles/edits', m.idMueble]">
+          <mat-icon [ngClass]="{'icon-green': m.sostenibilidad, 'icon-gray': !m.sostenibilidad}">
+            {{ m.sostenibilidad ? 'check_circle' : 'cancel' }}
+          </mat-icon>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="c8">
+        <th mat-header-cell *matHeaderCellDef>Software</th>
+        <td mat-cell *matCellDef="let m">{{ m.programaDev }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="c9">
+        <th mat-header-cell *matHeaderCellDef>Modelo 3D</th>
+        <td mat-cell *matCellDef="let m">
+          <button mat-icon-button color="primary" [routerLink]="['/disenos/subir', m.idMueble]" matTooltip="Subir archivo 3D">
+            <mat-icon>cloud_upload</mat-icon>
+          </button>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="c10">
+        <th mat-header-cell *matHeaderCellDef>Editar</th>
+        <td mat-cell *matCellDef="let m">
+          <button mat-icon-button [routerLink]="['/muebles/edits', m.idMueble]">
             <mat-icon>edit</mat-icon>
           </button>
         </td>
       </ng-container>
 
-      <!-- ELIMINAR -->
-      <ng-container matColumnDef="c10">
-        <th mat-header-cell *matHeaderCellDef>Eliminar</th>
+      <ng-container matColumnDef="c11">
+        <th mat-header-cell *matHeaderCellDef>Borrar</th>
         <td mat-cell *matCellDef="let m">
-          <button matButton (click)="eliminar(m.idMueble!)">
+          <button mat-icon-button color="warn" (click)="eliminar(m.idMueble!)">
             <mat-icon>delete</mat-icon>
           </button>
         </td>
