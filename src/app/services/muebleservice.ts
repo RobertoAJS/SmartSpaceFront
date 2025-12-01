@@ -44,10 +44,7 @@ export class Muebleservice {
     });
   }
 
-  searchName(categoria: string) {
-  const params = { categoria };
-  return this.http.get<Mueble[]>(`${this.url}/buscar`, { params });
-}
+
 
   setList(listaNueva: Mueble[]) {
     this.listaCambio.next(listaNueva);

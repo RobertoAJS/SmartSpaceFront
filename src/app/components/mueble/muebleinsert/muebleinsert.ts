@@ -13,6 +13,7 @@ import { MatInputModule } from '@angular/material/input';
 import { Muebleservice } from '../../../services/muebleservice';
 import { Mueble } from '../../../models/mueble';
 import { ActivatedRoute, Params, Router } from '@angular/router';
+import { Authservice } from '../../../services/authservice';
 
 @Component({
   selector: 'app-muebleinsert',
@@ -39,7 +40,8 @@ export class Muebleinsert implements OnInit {
     private mS: Muebleservice,
     private router: Router,
     private formBuilder: FormBuilder,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private authService: Authservice,
   ) {}
 
   ngOnInit(): void {
@@ -108,10 +110,16 @@ export class Muebleinsert implements OnInit {
     this.mueble.programaDev = this.form.value.programaDev;
     this.mueble.sostenibilidad = this.form.value.sostenibilidad;
 
-    // --- IMPORTANTE: Asignar Usuario por defecto ---
-    // Como tu base de datos exige un usuario, usamos el ID 1 temporalmente.
-    // Más adelante aquí deberías poner: this.mueble.usuario = { idUsuario: this.authService.getId() };
-    this.mueble.usuario = { idUsuario: 1 } as any; 
+    const userId = this.authService.getUserId();
+
+    if (userId > 0) {
+        // Usamos 'as any' para inyectar la propiedad idUsuario que espera el DTO del Backend
+        // (Esto soluciona el error "null value in column id_usuario")
+        (this.mueble as any).idUsuario = userId;
+    } else {
+        alert("Error: No se pudo identificar al usuario. Por favor inicia sesión nuevamente.");
+        return;
+    }
 
     if (this.edicion) {
       this.mueble.idMueble = this.id;

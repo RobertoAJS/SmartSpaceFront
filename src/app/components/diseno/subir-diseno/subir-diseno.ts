@@ -78,7 +78,7 @@ export class SubirDisenoComponent implements OnInit {
         this.cargando = false;
         this.mensaje = '¡Diseño subido con éxito!';
         // Redirigir a la vista del diseño o volver a la lista
-        // this.router.navigate(['/muebles']); 
+        this.router.navigate(['/muebles']); 
         // O ir a ver el modelo 3D recién creado:
         // window.location.href = resp.url; 
       },
