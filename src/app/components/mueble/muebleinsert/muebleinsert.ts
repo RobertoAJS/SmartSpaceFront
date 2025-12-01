@@ -106,6 +106,7 @@ export class Muebleinsert implements OnInit {
     this.mueble.descripcion = this.form.value.descripcion;
     this.mueble.programaDev = this.form.value.programaDev;
     this.mueble.sostenibilidad = this.form.value.sostenibilidad;
+    this.mueble.idUsuario=this.form.value.idUsuario;
 
 
    if (this.edicion) {
