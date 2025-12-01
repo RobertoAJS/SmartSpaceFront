@@ -96,42 +96,43 @@ export class Muebleinsert implements OnInit {
       return;
     }
 
-    this.mueble.nombre = this.form.value.nombre;
-    this.mueble.categoria = this.form.value.categoria;
-    
-    // Asignamos los nuevos valores
-    this.mueble.alto = this.form.value.alto;
-    this.mueble.ancho = this.form.value.ancho;
-    this.mueble.profundidad = this.form.value.profundidad;
-    
-    this.mueble.estilo = this.form.value.estilo;
-    this.mueble.precio = this.form.value.precio;
-    this.mueble.descripcion = this.form.value.descripcion;
-    this.mueble.programaDev = this.form.value.programaDev;
-    this.mueble.sostenibilidad = this.form.value.sostenibilidad;
-
     const userId = this.authService.getUserId();
+  if (userId <= 0) {
+      alert("Error: No se pudo identificar al usuario.");
+      return;
+  }
 
-    if (userId > 0) {
-        // Usamos 'as any' para inyectar la propiedad idUsuario que espera el DTO del Backend
-        // (Esto soluciona el error "null value in column id_usuario")
-        (this.mueble as any).idUsuario = userId;
-    } else {
-        alert("Error: No se pudo identificar al usuario. Por favor inicia sesión nuevamente.");
-        return;
-    }
+  const payload = {
+      idMueble: this.edicion ? this.id : undefined,
+      nombre: this.form.value.nombre,
+      categoria: this.form.value.categoria,
+      alto: this.form.value.alto,
+      ancho: this.form.value.ancho,
+      profundidad: this.form.value.profundidad,
+      estilo: this.form.value.estilo,
+      precio: this.form.value.precio,
+      descripcion: this.form.value.descripcion,
+      programaDev: this.form.value.programaDev,
+      sostenibilidad: this.form.value.sostenibilidad,
+      
+      idUsuario: userId // <--- AQUÍ ESTÁ EL CAMPO QUE FALTABA (Plano)
+  };
 
+
+  
+    // 3. Enviar este 'payload' en lugar de 'this.mueble'
     if (this.edicion) {
-      this.mueble.idMueble = this.id;
-      this.mS.update(this.mueble).subscribe(() => {
+      // Nota: Asegúrate que tu servicio acepte 'any' o el tipo correcto
+      this.mS.update(payload as any).subscribe(() => {
         this.mS.list().subscribe((data) => this.mS.setList(data));
         this.router.navigate(['/muebles']);
       });
     } else {
-      this.mS.insert(this.mueble).subscribe(() => {
+      this.mS.insert(payload as any).subscribe(() => {
         this.mS.list().subscribe((data) => this.mS.setList(data));
         this.router.navigate(['/muebles']);
       });
     }
+
   }
 }
