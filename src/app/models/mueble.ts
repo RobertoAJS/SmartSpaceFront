@@ -1,3 +1,11 @@
+export interface DisenoBasic {
+  idDiseno: number;
+  nombre: string;
+  estado: string;
+  fechaCreacion: string;
+}
+
+
 export class Mueble {
     idMueble?: number;
     nombre: string = "";
@@ -12,4 +20,6 @@ export class Mueble {
     sostenibilidad: boolean = false;
     programaDev: string = "";
     idUsuario?: number; 
+
+    disenos?: DisenoBasic[]; 
 }

@@ -14,6 +14,7 @@ import { Muebleinsert } from './components/mueble/muebleinsert/muebleinsert';
 import { Mueblesearch } from './components/mueble/mueblesearch/mueblesearch';
 import { DisenoViewComponent } from './components/diseno-view/diseno-view';
 import { SubirDisenoComponent } from './components/diseno/subir-diseno/subir-diseno';
+import { Galeria } from './components/diseno/galeria/galeria';
 
 export const routes: Routes = [
   { path: 'landing', component: Landing }, // Landing pública
@@ -67,7 +68,7 @@ export const routes: Routes = [
 
   { path: 'disenos/subir/:id', component: SubirDisenoComponent },
 
-
+  {path: 'galeria', component: Galeria},
 
   { path: '', redirectTo: 'landing', pathMatch: 'full' },
   { path: '**', redirectTo: 'landing' },

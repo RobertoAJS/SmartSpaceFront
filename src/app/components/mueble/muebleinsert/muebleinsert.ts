@@ -12,7 +12,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { Muebleservice } from '../../../services/muebleservice';
 import { Mueble } from '../../../models/mueble';
-import { ActivatedRoute, Params, Router } from '@angular/router';
+import { ActivatedRoute, Params, Router, RouterLink } from '@angular/router';
 import { Authservice } from '../../../services/authservice';
 
 @Component({
@@ -25,6 +25,7 @@ import { Authservice } from '../../../services/authservice';
     MatButtonModule,
     MatInputModule,
     MatCheckboxModule,
+    RouterLink
   ],
   templateUrl: './muebleinsert.html',
   styleUrl: './muebleinsert.css',

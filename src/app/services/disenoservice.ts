@@ -17,7 +17,9 @@ export class Disenoservice {
 
   // 1. Subir archivo (FormData)
   subirDiseno(formData: FormData): Observable<any> {
-    return this.http.post(`${this.url}/subir`, formData);
+    return this.http.post(`${this.url}/subir`, formData, {
+      responseType: 'text' // <--- ERROR FALSO
+    });
   }
 
   // 2. Listar todos
